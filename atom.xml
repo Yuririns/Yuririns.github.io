@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Yuririns.github.io/"/>
-  <updated>2018-02-23T12:04:55.685Z</updated>
+  <updated>2018-02-25T04:09:21.064Z</updated>
   <id>http://Yuririns.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>跳一跳学adb</title>
+    <link href="http://Yuririns.github.io/2018/02/25/%E8%B7%B3%E4%B8%80%E8%B7%B3java%E5%8D%8A%E8%87%AA%E5%8A%A8%E5%88%B7%E5%88%86/"/>
+    <id>http://Yuririns.github.io/2018/02/25/跳一跳java半自动刷分/</id>
+    <published>2018-02-25T02:58:51.000Z</published>
+    <updated>2018-02-25T04:09:21.064Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前看到一个大佬写的java的跳一跳半自动刷分代码，然后大概研究了一下<br>代码：<a href="https://github.com/fourbrother/WXJumpGameUtils" target="_blank" rel="external">click me</a></p><p>原理主要是用到了两个adb命令：</p><blockquote><p>adb shell screencap 截屏操作<br>adb shell input text 模拟滑动事件</p></blockquote><p>先在电脑上配置号android的adb环境变量<br>配置好了之后手机连上数据线，选择USB调试模式，测试一下通过adb命令截图</p><p><code>adb shell /system/bin/screencap -p /sdcard/1/screenshot.png（将截图保存到SDCard下文件夹1里）</code><br><code>adb pull /sdcard/screenshot.png e:/1/screenshot.png（将手机里的截图保存到电脑e盘下文件夹1里）</code><br><img src="/pic/2_1.png" alt="image"><br>可以看到E盘下多了一个图片文件<br><img src="/pic/2_2.png" alt="image"></p><p>而另一个adb命令是：<br><code>adb shell input touchscreen swipe x1 y1 x2 y2 time</code><br>这个命令是在模拟滑动事件，从（x1,y1）经历time（时间）滑动到（x2,y2）</p><p><code>adb shell input touchscreen swipe 170 180 200 200 300（从（170,180）经历200毫秒滑动到（200,200））</code></p><p>而当（x1,y1）和（x2,y2）相同的特殊情况可以达到模拟长按的效果</p><p><code>adb shell input touchscreen swipe 170 180 170 180 3000（长按3000毫秒）</code></p><p>在运行大佬的java代码时，我发现在eclipse中运行代码中的adb命令没有效果，测试截图也没有截图（cmd命令窗口下能正常使用adb命令）<br>后来查了一下发现要把adb的exe程序和两个动态链接库dll拷贝到C盘两个目录下<br>将下面图片上选中的三个文件<br><img src="/pic/2_4.png" alt="image"><br>拷贝到：<br>C:\Windows\System32<br>C:\Windows\SysWOW64<br>这两个文件夹中<br>然后就能成功运行啦~<br><img src="/pic/2_3.png" alt="image"></p><p>在中途切出去想切首歌也被截到了2333<br><img src="/pic/2_3.jpg" alt="image"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;之前看到一个大佬写的java的跳一跳半自动刷分代码，然后大概研究了一下&lt;br&gt;代码：&lt;a href=&quot;https://github.com/fourbrother/WXJumpGameUtils&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;click m
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>CVE-2017-12615漏洞复现</title>
     <link href="http://Yuririns.github.io/2018/02/23/CVE-2017-12615%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     <id>http://Yuririns.github.io/2018/02/23/CVE-2017-12615漏洞复现/</id>
     <published>2018-02-23T09:04:35.000Z</published>
-    <updated>2018-02-23T12:04:55.685Z</updated>
+    <updated>2018-02-25T04:09:19.209Z</updated>
     
     <content type="html"><![CDATA[<h1 id="CVE-2017-12615漏洞复现"><a href="#CVE-2017-12615漏洞复现" class="headerlink" title="CVE-2017-12615漏洞复现"></a>CVE-2017-12615漏洞复现</h1><hr><h3 id="1-漏洞背景"><a href="#1-漏洞背景" class="headerlink" title="1.漏洞背景"></a>1.漏洞背景</h3><p>Tomcat如果开启PUT方法支持则可能存在远程代码执行漏洞，漏洞编号为CVE-2017-12615的漏洞。攻击者可以在使用漏洞上传JSP文件，从而导致远程代码执行。此漏洞影响Windows平台下的Apache Tomcat 7.x版本，目前已经在Apache Tomcat 7.0.81中修复。</p><h3 id="2-环境配置和相关说明"><a href="#2-环境配置和相关说明" class="headerlink" title="2.环境配置和相关说明"></a>2.环境配置和相关说明</h3><ul><li>Windows 7</li><li>配置jdk环境</li><li>Tomcat ，版本为7.0.55</li><li>burpsuite</li></ul><p>安装tomcat，这里安装的版本为7.0.55<br><img src="/pic/1_1.png" alt="image"><br>修改Tomcat的conf下的web.xml配置文件<br>添加readonly设置为false时的情况(添加以下代码)</p><p><code>&lt;init-param&gt;</code><br><code>&lt;param-name&gt;readonly&lt;/param-name&gt;</code><br><code>&lt;param-value&gt;false&lt;/param-value&gt;</code><br><code>&lt;/init-param&gt;</code></p><p>打开burpsuite进行抓包，在抓包前修改burp代理的默认端口，设置为8008<br>同样地，在浏览器的代理处也设置为127.0.0.1:8008<br><img src="/pic/1_2.png" alt="image"><br>开启代理后刷新web页面进行抓包<br><img src="/pic/1_3.png" alt="image"><br>将GET / HTTP/1.1改成 PUT /1.jsp/ HTTP/1.1<br><img src="/pic/1_4.png" alt="image"><br>然后点击forward<br>浏览器回显是201，说明写入成功<br>来到webapps/ROOT目录下可以看到确实写入成功<br><img src="/pic/1_5.png" alt="image"><br>文件上传成功<br>当时是室友工程实践出问题了，我帮她找问题的时候把这个漏洞复现了一遍，完成的比较简单_(:3J∠)_<br>最后应该还要传一句话木马然后连菜刀的_(:3J∠)_</p>]]></content>
     
@@ -43,15 +64,15 @@
     <link href="http://Yuririns.github.io/2017/10/02/hello-world/"/>
     <id>http://Yuririns.github.io/2017/10/02/hello-world/</id>
     <published>2017-10-02T08:56:34.893Z</published>
-    <updated>2017-10-12T12:52:34.723Z</updated>
+    <updated>2018-02-25T04:06:07.227Z</updated>
     
-    <content type="html"><![CDATA[<p>现在作为一个没有什么技术的咸鱼也不知道该放些什么<em>(:3J∠)</em><br>瑟瑟发抖ing<br>大概硬要写的话只能写出<br>学校周围哪里的奶茶好喝<br>或者我们寝室小姐姐的做饭日记23333</p>]]></content>
+    <content type="html"><![CDATA[<p>23333</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;现在作为一个没有什么技术的咸鱼也不知道该放些什么&lt;em&gt;(:3J∠)&lt;/em&gt;&lt;br&gt;瑟瑟发抖ing&lt;br&gt;大概硬要写的话只能写出&lt;br&gt;学校周围哪里的奶茶好喝&lt;br&gt;或者我们寝室小姐姐的做饭日记23333&lt;/p&gt;
+        &lt;p&gt;23333&lt;/p&gt;
 
       
     

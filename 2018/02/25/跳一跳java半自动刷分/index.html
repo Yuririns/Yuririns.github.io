@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        emmmmm · Yuririn&#39;s blog
+        跳一跳学adb · Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -81,7 +81,7 @@
                 <a href="/" >Home</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">emmmmm</a>
+                <a href="#" class="post-name">跳一跳学adb</a>
             </div>
     </div>
     
@@ -102,7 +102,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            emmmmm
+            跳一跳学adb
             <!-- 404 -->
             
         </h1>
@@ -120,7 +120,7 @@
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/10/02</span>
+                <span class="post-intro-time">2018/02/25</span>
             </div>
         
     </div>
@@ -128,19 +128,31 @@
         <div class="container">
             <main class="main post-page">
     <article class="article-entry">
-        <p>23333</p>
+        <p>之前看到一个大佬写的java的跳一跳半自动刷分代码，然后大概研究了一下<br>代码：<a href="https://github.com/fourbrother/WXJumpGameUtils" target="_blank" rel="external">click me</a></p>
+<p>原理主要是用到了两个adb命令：</p>
+<blockquote>
+<p>adb shell screencap 截屏操作<br>adb shell input text 模拟滑动事件</p>
+</blockquote>
+<p>先在电脑上配置号android的adb环境变量<br>配置好了之后手机连上数据线，选择USB调试模式，测试一下通过adb命令截图</p>
+<p><code>adb shell /system/bin/screencap -p /sdcard/1/screenshot.png（将截图保存到SDCard下文件夹1里）</code><br><code>adb pull /sdcard/screenshot.png e:/1/screenshot.png（将手机里的截图保存到电脑e盘下文件夹1里）</code><br><img src="/pic/2_1.png" alt="image"><br>可以看到E盘下多了一个图片文件<br><img src="/pic/2_2.png" alt="image"></p>
+<p>而另一个adb命令是：<br><code>adb shell input touchscreen swipe x1 y1 x2 y2 time</code><br>这个命令是在模拟滑动事件，从（x1,y1）经历time（时间）滑动到（x2,y2）</p>
+<p><code>adb shell input touchscreen swipe 170 180 200 200 300（从（170,180）经历200毫秒滑动到（200,200））</code></p>
+<p>而当（x1,y1）和（x2,y2）相同的特殊情况可以达到模拟长按的效果</p>
+<p><code>adb shell input touchscreen swipe 170 180 170 180 3000（长按3000毫秒）</code></p>
+<p>在运行大佬的java代码时，我发现在eclipse中运行代码中的adb命令没有效果，测试截图也没有截图（cmd命令窗口下能正常使用adb命令）<br>后来查了一下发现要把adb的exe程序和两个动态链接库dll拷贝到C盘两个目录下<br>将下面图片上选中的三个文件<br><img src="/pic/2_4.png" alt="image"><br>拷贝到：<br>C:\Windows\System32<br>C:\Windows\SysWOW64<br>这两个文件夹中<br>然后就能成功运行啦~<br><img src="/pic/2_3.png" alt="image"></p>
+<p>在中途切出去想切首歌也被截到了2333<br><img src="/pic/2_3.jpg" alt="image"></p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
-            <li class="next">
+        
+            <li class="previous">
                 <a href= "/2018/02/23/CVE-2017-12615漏洞复现/" title= CVE-2017-12615漏洞复现 >
-                    <span>Next Post</span>
+                    <span>Previous Post</span>
                     <span>CVE-2017-12615漏洞复现</span>
                 </a>
             </li>
-        
         
     </ul>
 
