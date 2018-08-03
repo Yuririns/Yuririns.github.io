@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Yuririns.github.io/"/>
-  <updated>2018-08-03T05:50:57.411Z</updated>
+  <updated>2018-08-03T07:10:04.819Z</updated>
   <id>http://Yuririns.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://Yuririns.github.io/2018/08/03/map%E5%87%BD%E6%95%B0/"/>
     <id>http://Yuririns.github.io/2018/08/03/map函数/</id>
     <published>2018-08-03T05:36:51.000Z</published>
-    <updated>2018-08-03T05:50:57.411Z</updated>
+    <updated>2018-08-03T07:10:04.819Z</updated>
     
-    <content type="html"><![CDATA[<p>在之前写AES加密算法的代码时，发现map函数在2.x版本和3.x版本中用法有点不同：</p><blockquote><p>Python 2.x 返回列表。<br>Python 3.x 返回迭代器。</p></blockquote><p>在3.x的版本中mao()函数返回的是迭代器，所以需要使用list()函数使其返回正常列表：<br><img src="/pic/map函数/1.png" alt="image"></p><p>以及在2.x版本中可以使用下面①的方法实现输出[ (1<em>2) , (3</em>2) , (2<em>3) , (4</em>8) ]：<br><img src="/pic/map函数/2.png" alt="image"><br>而在3.x版本中无法识别 lambda(a,b) 所以使用②的方法：lambda x: x[0]*x[1]</p>]]></content>
+    <content type="html"><![CDATA[<p>在之前写AES加密算法的代码时，发现map函数在2.x版本和3.x版本中用法有点不同：</p><blockquote><p>Python 2.x 返回列表。<br>Python 3.x 返回迭代器。</p></blockquote><p>在3.x的版本中mao()函数返回的是迭代器，所以需要使用list()函数使其返回正常列表：<br><img src="/pic/map函数/1.png" alt="image"></p><p>以及在2.x版本中可以使用下面①的方法实现输出[(1<em>2),(3</em>2),(2<em>3),(4</em>8)]:<br><img src="/pic/map函数/2.png" alt="image"><br>而在3.x版本中无法识别 lambda(a,b) 所以使用②的方法：lambda x: x[0]*x[1]</p>]]></content>
     
     <summary type="html">
     
