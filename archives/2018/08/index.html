@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        404 · Yuririn&#39;s blog
+        Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,8 +68,6 @@
     
 </head>
     
-        <body class="four-zero-four-body">
-    
     
 <header class="header">
 
@@ -82,34 +80,57 @@
         <div class="site-intro">
     
     <!-- 主页  -->
-    
-    
-    <!-- about页 -->
             
-    <div class="site-intro-img" style="background-image: url(http://oumn0o088.bkt.clouddn.com/404.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            404
-            <!-- about -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            <p class="intro-subtitle"> </p>
-        
         <!-- 文章页meta -->
         
     </div>
 </div>
         <div class="container">
-            <!-- 不可以删除，否则会调用post的layout  -->
+            <main class="main index-page">
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2018/08/03/map函数/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>map函数和lambda函数</span>
+                    </h2>
+                <div class="abstract-content">
+                    在之前写AES加密算法的代码时，发现map函数在2.x版本和3.x版本中用法有点不同：
 
+Python 2.x 返回列表。Python 3.x 返回迭代器。
+
+在3.x的版本中mao()函数返回的是迭代器，所以需要使用list()函数使其返回正常列表：
+以及在2.x版本中可以使用下面①的方法实现输出[ (12) , (32) , (23) , (48) ]：而在3.x版本中无法识别 lambda(a,b) 所以使用②的方法：lambda x: x[0]*x[1]
+
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/08/03</span>
+                </div>
+            </div>
+        </article>
+    
+    <!-- paginator  -->
+    
+</main>
             <!-- profile -->
             
         </div>
