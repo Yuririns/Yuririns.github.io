@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Yuririns.github.io/"/>
-  <updated>2018-08-03T07:10:04.819Z</updated>
+  <updated>2018-08-07T07:29:29.546Z</updated>
   <id>http://Yuririns.github.io/</id>
   
   <author>
@@ -17,13 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>pytorch安装</title>
+    <link href="http://Yuririns.github.io/2018/08/07/pytorch%E5%AE%89%E8%A3%85/"/>
+    <id>http://Yuririns.github.io/2018/08/07/pytorch安装/</id>
+    <published>2018-08-07T06:44:54.000Z</published>
+    <updated>2018-08-07T07:29:29.546Z</updated>
+    
+    <content type="html"><![CDATA[<p>环境为win8.1+python3.6.2<br>这里选择通过Python3.6+pip安装gpu版本pytorch</p><p>首先要先安装cuda：<a href="https://developer.nvidia.com/cuda-downloadstarget_os=Windows&amp;target_arch=x86_64" target="_blank" rel="external">cuda下载地址</a></p><p>根据自己的系统选择相对应的版本：<br><img src="/pic/pytorch安装/1.png" alt="image"></p><p>下载cuDNN库：<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">cuDNN库下载地址</a><br>需要注册并且填写一个问卷<br><img src="/pic/pytorch安装/2.png" alt="image"><br>然鹅！！！<br>好不容易填写完问卷之后，我发现cuDNN下载只提供了win7和win10的_(:3J∠)_<br><img src="/pic/pytorch安装/3.png" alt="image"><br>然后win8的我放弃了这一步</p><p>安装完毕后测试安装结果<br>打开命令提示符，输入：nvcc -V<br>结果如下：<br><img src="/pic/pytorch安装/4.png" alt="image"></p><p>接下来安装pytorch：<br>下载：<a href="https://pan.baidu.com/s/1dF6ayLr#list/path=%2Fpytorch" target="_blank" rel="external">pytorch</a><br>由于我的环境为：win8.1+python3.6.2+cuda8.0<br>所以选择下载：<br><img src="/pic/pytorch安装/5.png" alt="image"><br>这里可供选择的两个whl文件都是要求64位Python的，由于我之前安装的Python3.6是32位的还卸载了重新安装了64位_(:3J∠)_</p><p>下载后通过pip安装whl文件<br>安装完成后测试：<br><img src="/pic/pytorch安装/6.png" alt="image"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;环境为win8.1+python3.6.2&lt;br&gt;这里选择通过Python3.6+pip安装gpu版本pytorch&lt;/p&gt;
+&lt;p&gt;首先要先安装cuda：&lt;a href=&quot;https://developer.nvidia.com/cuda-downloadstarget_o
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>map函数和lambda函数</title>
     <link href="http://Yuririns.github.io/2018/08/03/map%E5%87%BD%E6%95%B0/"/>
     <id>http://Yuririns.github.io/2018/08/03/map函数/</id>
     <published>2018-08-03T05:36:51.000Z</published>
-    <updated>2018-08-03T07:10:04.819Z</updated>
+    <updated>2018-08-03T07:38:56.637Z</updated>
     
-    <content type="html"><![CDATA[<p>在之前写AES加密算法的代码时，发现map函数在2.x版本和3.x版本中用法有点不同：</p><blockquote><p>Python 2.x 返回列表。<br>Python 3.x 返回迭代器。</p></blockquote><p>在3.x的版本中mao()函数返回的是迭代器，所以需要使用list()函数使其返回正常列表：<br><img src="/pic/map函数/1.png" alt="image"></p><p>以及在2.x版本中可以使用下面①的方法实现输出[(1<em>2),(3</em>2),(2<em>3),(4</em>8)]:<br><img src="/pic/map函数/2.png" alt="image"><br>而在3.x版本中无法识别 lambda(a,b) 所以使用②的方法：lambda x: x[0]*x[1]</p>]]></content>
+    <content type="html"><![CDATA[<p>在之前写AES加密算法的代码时，发现map函数在2.x版本和3.x版本中用法有点不同：</p><blockquote><p>Python 2.x 返回列表。<br>Python 3.x 返回迭代器。</p></blockquote><p>在3.x的版本中mao()函数返回的是迭代器，所以需要使用list()函数使其返回正常列表：<br><img src="/pic/map函数/1.png" alt="image"></p><p>以及在2.x版本中可以使用下面①的方法实现输出<br>[(1*2),(3*2),(2*3),(4*8)]:<br><img src="/pic/map函数/2.png" alt="image"><br>而在3.x版本中无法识别 lambda(a,b) 所以使用②的方法：lambda x: x[0]*x[1]</p>]]></content>
     
     <summary type="html">
     

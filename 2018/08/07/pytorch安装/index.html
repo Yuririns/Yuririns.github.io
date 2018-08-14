@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Yuririn&#39;s blog
+        pytorch安装 · Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,11 +68,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Home</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">pytorch安装</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Home</a>
 </header>
@@ -80,85 +91,73 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/pic/3.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            pytorch安装
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+        </p>
+        <!-- 404 -->
+        
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/08/07</span>
+            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/02/25/跳一跳java半自动刷分/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>跳一跳学adb</span>
-                    </h2>
-                <div class="abstract-content">
-                    之前看到一个大佬写的java的跳一跳半自动刷分代码，然后大概研究了一下代码：click me
-原理主要是用到了两个adb命令：
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>环境为win8.1+python3.6.2<br>这里选择通过Python3.6+pip安装gpu版本pytorch</p>
+<p>首先要先安装cuda：<a href="https://developer.nvidia.com/cuda-downloadstarget_os=Windows&amp;target_arch=x86_64" target="_blank" rel="external">cuda下载地址</a></p>
+<p>根据自己的系统选择相对应的版本：<br><img src="/pic/pytorch安装/1.png" alt="image"></p>
+<p>下载cuDNN库：<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">cuDNN库下载地址</a><br>需要注册并且填写一个问卷<br><img src="/pic/pytorch安装/2.png" alt="image"><br>然鹅！！！<br>好不容易填写完问卷之后，我发现cuDNN下载只提供了win7和win10的_(:3J∠)_<br><img src="/pic/pytorch安装/3.png" alt="image"><br>然后win8的我放弃了这一步</p>
+<p>安装完毕后测试安装结果<br>打开命令提示符，输入：nvcc -V<br>结果如下：<br><img src="/pic/pytorch安装/4.png" alt="image"></p>
+<p>接下来安装pytorch：<br>下载：<a href="https://pan.baidu.com/s/1dF6ayLr#list/path=%2Fpytorch" target="_blank" rel="external">pytorch</a><br>由于我的环境为：win8.1+python3.6.2+cuda8.0<br>所以选择下载：<br><img src="/pic/pytorch安装/5.png" alt="image"><br>这里可供选择的两个whl文件都是要求64位Python的，由于我之前安装的Python3.6是32位的还卸载了重新安装了64位_(:3J∠)_</p>
+<p>下载后通过pip安装whl文件<br>安装完成后测试：<br><img src="/pic/pytorch安装/6.png" alt="image"></p>
 
-adb shell screencap 截屏操作adb shell input text 模拟滑动事件
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2018/08/03/map函数/" title= map函数和lambda函数 >
+                    <span>Previous Post</span>
+                    <span>map函数和lambda函数</span>
+                </a>
+            </li>
+        
+    </ul>
 
-先在电脑上配置号android的adb环境变量配置好了之后手机连上数据线，选择USB调试模式，测试一下通过adb命令截图
-adb shell /system/bin/screencap -p /sdcard/1/screenshot.png（将截图保存到SDCard下文件夹1里）adb pull /sdcard/screenshot.png e:/1/sc...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/02/25</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/02/23/CVE-2017-12615漏洞复现/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>CVE-2017-12615漏洞复现</span>
-                    </h2>
-                <div class="abstract-content">
-                    CVE-2017-12615漏洞复现
-1.漏洞背景Tomcat如果开启PUT方法支持则可能存在远程代码执行漏洞，漏洞编号为CVE-2017-12615的漏洞。攻击者可以在使用漏洞上传JSP文件，从而导致远程代码执行。此漏洞影响Windows平台下的Apache Tomcat 7.x版本，目前已经在Apache Tomcat 7.0.81中修复。
-2.环境配置和相关说明
-Windows 7
-配置jdk环境
-Tomcat ，版本为7.0.55
-burpsuite
 
-安装tomcat，这里安装的版本为7.0.55修改Tomcat的conf下的web.xml配置文件添加readonly设置为fa...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/02/23</span>
-                </div>
-            </div>
-        </article>
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <!-- paginator  -->
+    
+    <!--PC版-->
+
     
 </main>
             <!-- profile -->
