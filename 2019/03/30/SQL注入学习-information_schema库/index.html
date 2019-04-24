@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Yuririn&#39;s blog
+        SQL注入学习-information_schema库 · Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,11 +68,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Home</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">SQL注入学习-information_schema库</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Home</a>
 </header>
@@ -80,50 +91,73 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/pic/3.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            SQL注入学习-information_schema库
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+        </p>
+        <!-- 404 -->
+        
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2019/03/30</span>
+            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/02/hello-world/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>emmmmm</span>
-                    </h2>
-                <div class="abstract-content">
-                    23333
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="SQL注入学习-information-schema库"><a href="#SQL注入学习-information-schema库" class="headerlink" title="SQL注入学习-information_schema库"></a><strong>SQL注入学习-information_schema库</strong></h1><h3 id="查看information-schema库"><a href="#查看information-schema库" class="headerlink" title="查看information_schema库"></a>查看information_schema库</h3><p>1、schemata表<br>打开名叫schemata（这个单词是schem-图表的复数形式）的表，可以看到表中的内容，其中有一列的列名为schema_name，此列的数据为所有的数据库的名称<br><img src="/pic/sql学习1/1.png" alt="image"></p>
+<p>2、tables表<br>打开名叫tables的表，可以看到表中的其中两列：table_schema和table_name，table_name的数据为数据库中的表名，而table_schema的数据为table_name中的表所对应的数据库名<br><img src="/pic/sql学习1/2.png" alt="image"></p>
+<p>3、columns表<br>打开名叫columns的表，可以看到表中的其中三列：table_schema，table_name，column_name，其中的table_schema，table_name和在tables的表中的作用是相同的，而column_name这一列中的数据存放的是各个表里的列名<br><img src="/pic/sql学习1/3.png" alt="image"></p>
+<h3 id="利用information-schema进行注入"><a href="#利用information-schema进行注入" class="headerlink" title="利用information_schema进行注入"></a>利用information_schema进行注入</h3><p>1、猜库<br>select schema_name from information_schema.schema</p>
+<p>2、猜库中的表<br>select table_name from information_schema.tables where table_shcema=”xxx”</p>
+<p>3、猜表中列<br>select column_name from information_schema.columns where table_name=”xxx”</p>
+<p>4、猜段<br>select *** from ***</p>
 
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/02</span>
-                </div>
-            </div>
-        </article>
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2019/03/30/Python输出/" title= python 输出 >
+                    <span>Previous Post</span>
+                    <span>python 输出</span>
+                </a>
+            </li>
+        
+    </ul>
+
+
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <!-- paginator  -->
+    
+    <!--PC版-->
+
     
 </main>
             <!-- profile -->
@@ -246,29 +280,46 @@
     
     
     
-    <div class="total-archive"> Total : 7 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 8 </div>
     
     <div class="post-archive">
     
     
     
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2019 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2017/10/02/hello-world/" >emmmmm</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
+        </li>
     
     
         <li class="archive-post-item">
