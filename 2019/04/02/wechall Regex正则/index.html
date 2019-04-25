@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        pytorch安装 · Yuririn&#39;s blog
+        wechall Regex正则 · Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -81,7 +81,7 @@
                 <a href="/" >Home</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">pytorch安装</a>
+                <a href="#" class="post-name">wechall Regex正则</a>
             </div>
     </div>
     
@@ -102,7 +102,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            pytorch安装
+            wechall Regex正则
             <!-- 404 -->
             
         </h1>
@@ -118,9 +118,15 @@
         
             <!-- 文章页标签  -->
             
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = 正则>正则</a>
+    
+</div>
+            
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/08/07</span>
+                <span class="post-intro-time">2019/04/02</span>
             </div>
         
     </div>
@@ -128,30 +134,52 @@
         <div class="container">
             <main class="main post-page">
     <article class="article-entry">
-        <p>环境为win8.1+python3.6.2<br>这里选择通过Python3.6+pip安装gpu版本pytorch</p>
-<p>首先要先安装cuda：<a href="https://developer.nvidia.com/cuda-downloadstarget_os=Windows&amp;target_arch=x86_64" target="_blank" rel="external">cuda下载地址</a></p>
-<p>根据自己的系统选择相对应的版本：<br><img src="/pic/pytorch安装/1.png" alt="image"></p>
-<p>下载cuDNN库：<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">cuDNN库下载地址</a><br>需要注册并且填写一个问卷<br><img src="/pic/pytorch安装/2.png" alt="image"><br>然鹅！！！<br>好不容易填写完问卷之后，我发现cuDNN下载只提供了win7和win10的_(:3J∠)_<br><img src="/pic/pytorch安装/3.png" alt="image"><br>然后win8的我放弃了这一步</p>
-<p>安装完毕后测试安装结果<br>打开命令提示符，输入：nvcc -V<br>结果如下：<br><img src="/pic/pytorch安装/4.png" alt="image"></p>
-<p>接下来安装pytorch：<br>下载：<a href="https://pan.baidu.com/s/1dF6ayLr#list/path=%2Fpytorch" target="_blank" rel="external">pytorch</a><br>由于我的环境为：win8.1+python3.6.2+cuda8.0<br>所以选择下载：<br><img src="/pic/pytorch安装/5.png" alt="image"><br>这里可供选择的两个whl文件都是要求64位Python的，由于我之前安装的Python3.6是32位的还卸载了重新安装了64位_(:3J∠)_</p>
-<p>下载后通过pip安装whl文件<br>安装完成后测试：<br><img src="/pic/pytorch安装/6.png" alt="image"></p>
+        <h3 id="Level-1"><a href="#Level-1" class="headerlink" title="Level 1"></a>Level 1</h3><p>匹配空字</p>
+<pre><code>/^$/
+</code></pre><h3 id="Level-2"><a href="#Level-2" class="headerlink" title="Level 2"></a>Level 2</h3><p>匹配wechall</p>
+<pre><code>/^wechall$/
+</code></pre><h3 id="Level-3"><a href="#Level-3" class="headerlink" title="Level 3"></a>Level 3</h3><p>从这道题开始被自己蠢哭！！！！<br>一开始最后面没有加$，然后出现提示：</p>
+<blockquote>
+<p>Your pattern would match “wechall.jpg “, but it should not match it.</p>
+</blockquote>
+<p>意思是不能匹配“wechal.jpn （后面有个空格）”，但是我现在的答案是能匹配的，所以现在的答案是错误的<br>然而我当时一晃神看成了我需要匹配“wechal.jpn （后面有个空格）”，然后在这个空格上面死磕了好久，被自己蠢哭</p>
+<p>匹配文件名为wechall或者wechall4，后缀为图片格式的后缀</p>
+<pre><code>/^wechall4?\.(?:jpg|gif|tiff|bmp|png)$/
+</code></pre><h3 id="Level-4"><a href="#Level-4" class="headerlink" title="Level 4"></a>Level 4</h3><p>匹配和level 3的要求一样，但是还要求捕获文件名（wehall/wechall4）但不捕获文件后缀名</p>
+<pre><code>/^(wechall4?)\.(?:jpg|gif|tiff|bmp|png)$/
+</code></pre><p>这里后面的后缀名的非捕获组要使用“?:”而不是“?=”，是因为“?=”（正向肯定预查）不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">表达式</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">(exp)</td>
+<td style="text-align:center">匹配并捕获（捕获组）</td>
+</tr>
+<tr>
+<td style="text-align:center">(?:exp)</td>
+<td style="text-align:center">匹配但不捕获（非捕获组，只分组而不捕获）</td>
+</tr>
+<tr>
+<td style="text-align:center">(?=exp)</td>
+<td style="text-align:center">正向肯定预查，匹配查找但不捕获（非捕获组，只分组而不捕获）</td>
+</tr>
+</tbody>
+</table>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
-            <li class="next">
-                <a href= "/2018/08/21/AES加密/" title= AES加密 >
-                    <span>Next Post</span>
-                    <span>AES加密</span>
-                </a>
-            </li>
-        
         
             <li class="previous">
-                <a href= "/2018/08/03/map函数/" title= map函数和lambda函数 >
+                <a href= "/2019/03/30/SQL注入学习-information_schema库/" title= SQL注入学习-information_schema库 >
                     <span>Previous Post</span>
-                    <span>map函数和lambda函数</span>
+                    <span>SQL注入学习-information_schema库</span>
                 </a>
             </li>
         

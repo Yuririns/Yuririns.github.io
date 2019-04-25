@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        pytorch安装 · Yuririn&#39;s blog
+        Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,22 +68,11 @@
     
 </head>
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Home</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">pytorch安装</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Home</a>
 </header>
@@ -91,80 +80,91 @@
         <div class="site-intro">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/pic/3.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            pytorch安装
-            <!-- 404 -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-        </p>
-        <!-- 404 -->
-        
         <!-- 文章页meta -->
-        
-            <!-- 文章页标签  -->
-            
-            <div class="post-intro-meta">
-                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/08/07</span>
-            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>环境为win8.1+python3.6.2<br>这里选择通过Python3.6+pip安装gpu版本pytorch</p>
-<p>首先要先安装cuda：<a href="https://developer.nvidia.com/cuda-downloadstarget_os=Windows&amp;target_arch=x86_64" target="_blank" rel="external">cuda下载地址</a></p>
-<p>根据自己的系统选择相对应的版本：<br><img src="/pic/pytorch安装/1.png" alt="image"></p>
-<p>下载cuDNN库：<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">cuDNN库下载地址</a><br>需要注册并且填写一个问卷<br><img src="/pic/pytorch安装/2.png" alt="image"><br>然鹅！！！<br>好不容易填写完问卷之后，我发现cuDNN下载只提供了win7和win10的_(:3J∠)_<br><img src="/pic/pytorch安装/3.png" alt="image"><br>然后win8的我放弃了这一步</p>
-<p>安装完毕后测试安装结果<br>打开命令提示符，输入：nvcc -V<br>结果如下：<br><img src="/pic/pytorch安装/4.png" alt="image"></p>
-<p>接下来安装pytorch：<br>下载：<a href="https://pan.baidu.com/s/1dF6ayLr#list/path=%2Fpytorch" target="_blank" rel="external">pytorch</a><br>由于我的环境为：win8.1+python3.6.2+cuda8.0<br>所以选择下载：<br><img src="/pic/pytorch安装/5.png" alt="image"><br>这里可供选择的两个whl文件都是要求64位Python的，由于我之前安装的Python3.6是32位的还卸载了重新安装了64位_(:3J∠)_</p>
-<p>下载后通过pip安装whl文件<br>安装完成后测试：<br><img src="/pic/pytorch安装/6.png" alt="image"></p>
-
-    </article>
-    <!-- 前后页  -->
-    <ul class="post-pager">
-        
-            <li class="next">
-                <a href= "/2018/08/21/AES加密/" title= AES加密 >
-                    <span>Next Post</span>
-                    <span>AES加密</span>
-                </a>
-            </li>
-        
-        
-            <li class="previous">
-                <a href= "/2018/08/03/map函数/" title= map函数和lambda函数 >
-                    <span>Previous Post</span>
-                    <span>map函数和lambda函数</span>
-                </a>
-            </li>
-        
-    </ul>
-
-
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
+            <main class="main index-page">
     
     
-    <!--PC版-->
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2019/03/19/XSS-Challenges2/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>XSS Challenges2</span>
+                    </h2>
+                <div class="abstract-content">
+                    Stage #10输入1&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;结果：发现过滤了domain，通过双写domain绕过
+1&quot;/&gt;&lt;script&gt;alert(document.domdomainain);&lt;/script&gt;
 
+Stage #11将script替换成了xscript，将onclick替换成了onxxx输入：&quot;&gt;&lt;a href=javasc%72ipt:alert(document.domain)&gt;111&lt;/a&gt;发...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/19</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2019/03/16/XSS-Challenges/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>XSS Challenges</span>
+                    </h2>
+                <div class="abstract-content">
+                    Stage #11&quot;&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
+弹框：
+Stage #21&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
+
+Stage #3输入：&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;发现转义了&lt;&gt;抓包修改第二个参数：弹窗:
+Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt;...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/16</span>
+                </div>
+            </div>
+        </article>
+    
+    <!-- paginator  -->
     
 </main>
             <!-- profile -->

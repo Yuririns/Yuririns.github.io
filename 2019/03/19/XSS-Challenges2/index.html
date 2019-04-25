@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        pytorch安装 · Yuririn&#39;s blog
+        XSS Challenges2 · Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -81,7 +81,7 @@
                 <a href="/" >Home</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">pytorch安装</a>
+                <a href="#" class="post-name">XSS Challenges2</a>
             </div>
     </div>
     
@@ -102,7 +102,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            pytorch安装
+            XSS Challenges2
             <!-- 404 -->
             
         </h1>
@@ -118,9 +118,15 @@
         
             <!-- 文章页标签  -->
             
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
+    
+</div>
+            
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/08/07</span>
+                <span class="post-intro-time">2019/03/19</span>
             </div>
         
     </div>
@@ -128,30 +134,43 @@
         <div class="container">
             <main class="main post-page">
     <article class="article-entry">
-        <p>环境为win8.1+python3.6.2<br>这里选择通过Python3.6+pip安装gpu版本pytorch</p>
-<p>首先要先安装cuda：<a href="https://developer.nvidia.com/cuda-downloadstarget_os=Windows&amp;target_arch=x86_64" target="_blank" rel="external">cuda下载地址</a></p>
-<p>根据自己的系统选择相对应的版本：<br><img src="/pic/pytorch安装/1.png" alt="image"></p>
-<p>下载cuDNN库：<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">cuDNN库下载地址</a><br>需要注册并且填写一个问卷<br><img src="/pic/pytorch安装/2.png" alt="image"><br>然鹅！！！<br>好不容易填写完问卷之后，我发现cuDNN下载只提供了win7和win10的_(:3J∠)_<br><img src="/pic/pytorch安装/3.png" alt="image"><br>然后win8的我放弃了这一步</p>
-<p>安装完毕后测试安装结果<br>打开命令提示符，输入：nvcc -V<br>结果如下：<br><img src="/pic/pytorch安装/4.png" alt="image"></p>
-<p>接下来安装pytorch：<br>下载：<a href="https://pan.baidu.com/s/1dF6ayLr#list/path=%2Fpytorch" target="_blank" rel="external">pytorch</a><br>由于我的环境为：win8.1+python3.6.2+cuda8.0<br>所以选择下载：<br><img src="/pic/pytorch安装/5.png" alt="image"><br>这里可供选择的两个whl文件都是要求64位Python的，由于我之前安装的Python3.6是32位的还卸载了重新安装了64位_(:3J∠)_</p>
-<p>下载后通过pip安装whl文件<br>安装完成后测试：<br><img src="/pic/pytorch安装/6.png" alt="image"></p>
+        <h3 id="Stage-10"><a href="#Stage-10" class="headerlink" title="Stage #10"></a>Stage #10</h3><p>输入<code>1&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;</code><br>结果：<br><img src="/pic/XSS-Challenges2/10-1.png" alt="image"><br>发现过滤了domain，通过双写domain绕过</p>
+<pre><code>1&quot;/&gt;&lt;script&gt;alert(document.domdomainain);&lt;/script&gt;
+</code></pre><p><img src="/pic/XSS-Challenges2/10-2.png" alt="image"></p>
+<h3 id="Stage-11"><a href="#Stage-11" class="headerlink" title="Stage #11"></a>Stage #11</h3><p>将script替换成了xscript，将onclick替换成了onxxx<br><br>输入：<code>&quot;&gt;&lt;a href=javasc%72ipt:alert(document.domain)&gt;111&lt;/a&gt;</code>发现不会弹窗，而是跳转链接：<br><img src="/pic/XSS-Challenges2/11-1.png" alt="image"><br>查了下资料发现不能用url编码，要用HTML字符实体</p>
+<pre><code>&quot;&gt;&lt;a href=javasc&amp;#114ipt:alert(document.domain)&gt;111&lt;/a&gt;
+</code></pre><p><img src="/pic/XSS-Challenges2/11-2.png" alt="image"><br>点击链接弹窗：<br><img src="/pic/XSS-Challenges2/11-3.png" alt="image"></p>
+<p>备注：<br>  JavaScript是个伪协议，对协议进行URL编码后，url解析就不能正常解码，所以认为协议无效，无法弹框。<br>而使用HTML字符实体的话，html先解码，然后url再解码，这样虽然协议进行了编码，但是url解析器仍然能解析。至于url编码alert(2),不关协议，url解析器可以正常解析。 可以弹框。</p>
+<p>  自己在本地用了个简单的环境测试了一下<br>使用url编码：<code>&lt;a href=javasc%72ipt:alert(0)&gt;test&lt;/a&gt;   （%72是r的url编码）</code><br>结果：<br><img src="/pic/XSS-Challenges2/11-4.png" alt="image"></p>
+<p>使用HTML实体：<code>&lt;a href=javasc&amp;#114ipt:alert(0)&gt;test1&lt;/a&gt;   （&amp;#114是r的HTML实体编码）</code><br>结果：<br><img src="/pic/XSS-Challenges2/11-5.png" alt="image"></p>
+<h3 id="Stage-12"><a href="#Stage-12" class="headerlink" title="Stage #12"></a>Stage #12</h3><p>过滤了&lt;&gt;和单引号双引号，查了下发现要利用IE会把``（左上角波浪的键）识别为双引号的特性</p>
+<pre><code>`` onclick=alert(document.domain);
+</code></pre><p>点击弹框：<br><img src="/pic/XSS-Challenges2/12-1.png" alt="image"></p>
+<h3 id="Stage-15"><a href="#Stage-15" class="headerlink" title="Stage #15"></a>Stage #15</h3><p>document.write，DOM型xss<br>输入`\x3cscript\x3ealert(document.domain);\x3c/script\x3e发现\被过滤掉了，查了下是因为是在js范畴，document.write在输出的时候会JavascriptDecode一下数据，会把数据原有\去除，即php里面的stripslashes<br>转义了“&lt;”“&gt;”用十六进制编码绕过</p>
+<pre><code>\\x3cscript\\x3ealert(document.domain);\\x3c/script\\x3e
+</code></pre><p>点击弹框：<br><img src="/pic/XSS-Challenges2/15-1.png" alt="image"></p>
+<p>普通十六进制：\xH（JavaScript编码）<br>进制编码：&#xH;(十六进制格式)（html实体编码）</p>
+<h3 id="Stage-16"><a href="#Stage-16" class="headerlink" title="Stage #16"></a>Stage #16</h3><p>Hint: “s/\\x/\\\\x/ig;”把“\\\x”替换成“\\x”<br>用unicode编码</p>
+<pre><code>\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
+</code></pre><p><img src="/pic/XSS-Challenges2/16-1.png" alt="image"></p>
+<p>有几道题因为浏览器版本原因没有做，所以到这基本xss challenges就算结束啦，感觉又重新学了一遍关于xss的知识</p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
             <li class="next">
-                <a href= "/2018/08/21/AES加密/" title= AES加密 >
+                <a href= "/2019/03/30/Python输出/" title= python 输出 >
                     <span>Next Post</span>
-                    <span>AES加密</span>
+                    <span>python 输出</span>
                 </a>
             </li>
         
         
             <li class="previous">
-                <a href= "/2018/08/03/map函数/" title= map函数和lambda函数 >
+                <a href= "/2019/03/16/XSS-Challenges/" title= XSS Challenges >
                     <span>Previous Post</span>
-                    <span>map函数和lambda函数</span>
+                    <span>XSS Challenges</span>
                 </a>
             </li>
         

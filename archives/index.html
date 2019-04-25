@@ -103,6 +103,43 @@
     
     
         <article class="index-post">
+            <a class="content-show-full" href = "/2019/04/02/wechall Regex正则/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>wechall Regex正则</span>
+                    </h2>
+                <div class="abstract-content">
+                    Level 1匹配空字
+/^$/
+Level 2匹配wechall
+/^wechall$/
+Level 3从这道题开始被自己蠢哭！！！！一开始最后面没有加$，然后出现提示：
+
+Your pattern would match “wechall.jpg “, but it should not match it.
+
+意思是不能匹配“wechal.jpn （后面有个空格）”，但是我现在的答案是能匹配的，所以现在的答案是错误的然而我当时一晃神看成了我需要匹配“wechal.jpn （后面有个空格）”，然后在这个空格上面死磕了好久，被自己蠢哭
+匹配文件名为wechall或者wechall4，后缀...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = 正则>正则</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/04/02</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="content-show-full" href = "/2019/03/30/SQL注入学习-information_schema库/" >
                     <h2 class="abstract-title">
                         
@@ -188,6 +225,37 @@ hex 十六进制
     
     
         <article class="index-post">
+            <a class="content-show-full" href = "/2019/03/19/XSS-Challenges2/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>XSS Challenges2</span>
+                    </h2>
+                <div class="abstract-content">
+                    Stage #10输入1&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;结果：发现过滤了domain，通过双写domain绕过
+1&quot;/&gt;&lt;script&gt;alert(document.domdomainain);&lt;/script&gt;
+
+Stage #11将script替换成了xscript，将onclick替换成了onxxx输入：&quot;&gt;&lt;a href=javasc%72ipt:alert(document.domain)&gt;111&lt;/a&gt;发...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/19</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="content-show-full" href = "/2019/03/16/XSS-Challenges/" >
                     <h2 class="abstract-title">
                         
@@ -204,6 +272,12 @@ Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt
             </a>
             <div class="abstract-post-meta">
                 <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
+    
+</div>
                 
                 <!-- date  -->
                 <div class="abstract-date">
@@ -226,6 +300,12 @@ Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt
             </a>
             <div class="abstract-post-meta">
                 <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = python 密码学>python 密码学</a>
+    
+</div>
                 
                 <!-- date  -->
                 <div class="abstract-date">
@@ -491,7 +571,49 @@ burpsuite
     
     
     
-    <div class="total-archive"> Total : 8 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 10 </div>
     
     <div class="post-archive">
     
@@ -503,12 +625,22 @@ burpsuite
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2019/04/02/wechall Regex正则/" >wechall Regex正则</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/XSS-Challenges2/" >XSS Challenges2</a>
         </li>
     
     
@@ -554,6 +686,12 @@ burpsuite
   </div>
         <div class="sidebar-tags">
     <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">正则</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">xss</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python 密码学</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
