@@ -103,27 +103,27 @@
     
     
         <article class="index-post">
-            <a class="content-show-full" href = "/2018/08/21/AES加密/" >
+            <a class="content-show-full" href = "/2018/02/25/跳一跳java半自动刷分/" >
                     <h2 class="abstract-title">
                         
-                        <span>AES加密</span>
+                        <span>跳一跳学adb</span>
                     </h2>
                 <div class="abstract-content">
-                    AES加密1、AES加密原理简单介绍AES加密过程是在一个4×4的字节矩阵上运作，这个矩阵又称为“状态（state）”，其初值就是一个明文区块（矩阵中一个元素大小就是明文区块中的一个Byte）。（Rijndael加密法因支持更大的区块，其矩阵行数可视情况增加）加密时，各轮AES加密循环（除最后一轮外）均包含4个步骤：AddRoundKey — 矩阵中的每一个字节都与该次轮秘钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。SubBytes — 通过非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。ShiftRows — 将矩阵中的每个横列进行循环式移位。Mix...
+                    之前看到一个大佬写的java的跳一跳半自动刷分代码，然后大概研究了一下代码：click me
+原理主要是用到了两个adb命令：
+
+adb shell screencap 截屏操作adb shell input text 模拟滑动事件
+
+先在电脑上配置号android的adb环境变量配置好了之后手机连上数据线，选择USB调试模式，测试一下通过adb命令截图
+adb shell /system/bin/screencap -p /sdcard/1/screenshot.png（将截图保存到SDCard下文件夹1里）adb pull /sdcard/screenshot.png e:/1/sc...
                 </div>
             </a>
             <div class="abstract-post-meta">
                 <!-- tags  -->
                 
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = python 密码学>python 密码学</a>
-    
-</div>
-                
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/08/21</span>
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/02/25</span>
                 </div>
             </div>
         </article>
@@ -131,18 +131,21 @@
     
     
         <article class="index-post">
-            <a class="content-show-full" href = "/2018/08/07/pytorch安装/" >
+            <a class="content-show-full" href = "/2018/02/23/CVE-2017-12615漏洞复现/" >
                     <h2 class="abstract-title">
                         
-                        <span>pytorch安装</span>
+                        <span>CVE-2017-12615漏洞复现</span>
                     </h2>
                 <div class="abstract-content">
-                    环境为win8.1+python3.6.2这里选择通过Python3.6+pip安装gpu版本pytorch
-首先要先安装cuda：cuda下载地址
-根据自己的系统选择相对应的版本：
-下载cuDNN库：cuDNN库下载地址需要注册并且填写一个问卷然鹅！！！好不容易填写完问卷之后，我发现cuDNN下载只提供了win7和win10的_(:3J∠)_然后win8的我放弃了这一步
-安装完毕后测试安装结果打开命令提示符，输入：nvcc -V结果如下：
-接下来安装pytorch：下载：pytorch由于我的环境为：win8.1+python3.6.2+cuda8.0所以选择下载：这里可供选择的两个w...
+                    CVE-2017-12615漏洞复现
+1.漏洞背景Tomcat如果开启PUT方法支持则可能存在远程代码执行漏洞，漏洞编号为CVE-2017-12615的漏洞。攻击者可以在使用漏洞上传JSP文件，从而导致远程代码执行。此漏洞影响Windows平台下的Apache Tomcat 7.x版本，目前已经在Apache Tomcat 7.0.81中修复。
+2.环境配置和相关说明
+Windows 7
+配置jdk环境
+Tomcat ，版本为7.0.55
+burpsuite
+
+安装tomcat，这里安装的版本为7.0.55修改Tomcat的conf下的web.xml配置文件添加readonly设置为fa...
                 </div>
             </a>
             <div class="abstract-post-meta">
@@ -150,40 +153,16 @@
                 
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/08/07</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/08/03/map函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>map函数和lambda函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    在之前写AES加密算法的代码时，发现map函数在2.x版本和3.x版本中用法有点不同：
-
-Python 2.x 返回列表。Python 3.x 返回迭代器。
-
-在3.x的版本中mao()函数返回的是迭代器，所以需要使用list()函数使其返回正常列表：
-以及在2.x版本中可以使用下面①的方法实现输出[(1*2),(3*2),(2*3),(4*8)]:而在3.x版本中无法识别 lambda(a,b) 所以使用②的方法：lambda x: x[0]*x[1]
-
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/08/03</span>
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/02/23</span>
                 </div>
             </div>
         </article>
     
     <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/archives/">#PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
     
 </main>
             <!-- profile -->

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Yuririns.github.io/"/>
-  <updated>2019-04-25T02:02:20.450Z</updated>
+  <updated>2019-04-25T13:56:37.515Z</updated>
   <id>http://Yuririns.github.io/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Wechall-XSS</title>
+    <link href="http://Yuririns.github.io/2019/04/05/Wechall-XSS/"/>
+    <id>http://Yuririns.github.io/2019/04/05/Wechall-XSS/</id>
+    <published>2019-04-05T14:24:12.000Z</published>
+    <updated>2019-04-25T13:56:37.515Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Htmlspecialchars"><a href="#Htmlspecialchars" class="headerlink" title="Htmlspecialchars"></a>Htmlspecialchars</h3><p>试了下发现转义了双引号但没有转义单引号<br>Input：<code>111&#39; onmouseover=&#39;alert(111)</code><br>弹框：<br><img src="/pic/Wechall-XSS/1.png" alt="image"><br>查了下htmlspecialchars()相关资料发现当flags参数为默认的ENT_COMPAT时，仅编码双引号而不编码单引号。<br><img src="/pic/Wechall-XSS/2.png" alt="image"><br>将flags参数ENT_QUOTES添上通过:</p><pre><code>echo &quot;&lt;a href=&apos;http://&quot;.htmlspecialchars(Common::getPost(&apos;input&apos;),ENT_QUOTES).&quot;&apos;&gt;Exploit Me&lt;/a&gt;&quot;;</code></pre><h3 id="Yourself-PHP"><a href="#Yourself-PHP" class="headerlink" title="Yourself PHP"></a>Yourself PHP</h3><p>username参数输入被过滤了,看了下源码<br><img src="/pic/Wechall-XSS/3.png" alt="image"></p><p>$_SERVER[‘PHP_SELF’]漏洞<br>$_SERVER[‘PHP_SELF’]是一个服务器端的系统变量，会返回当前PHP文件相对于网站根目录的位置地址<br>比如这道题的地址为：<a href="https://www.wechall.net/challenge/yourself_php/index.php" target="_blank" rel="external">https://www.wechall.net/challenge/yourself_php/index.php</a><br>那这道题的$_SERVER[‘PHP_SELF’]值就为/challenge/yourself_php/index.php<br>当访问<a href="https://www.wechall.net/challenge/yourself_php/index.php/111时，并不会报错，并且$_SERVER[&#39;PHP_SELF&#39;]的值为challenge/yourself_php/index.php/111" target="_blank" rel="external">https://www.wechall.net/challenge/yourself_php/index.php/111时，并不会报错，并且$_SERVER[&#39;PHP_SELF&#39;]的值为challenge/yourself_php/index.php/111</a><br><img src="/pic/Wechall-XSS/5.png" alt="image"></p><pre><code>Payload:https://www.wechall.net/challenge/yourself_php/index.php/&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Htmlspecialchars&quot;&gt;&lt;a href=&quot;#Htmlspecialchars&quot; class=&quot;headerlink&quot; title=&quot;Htmlspecialchars&quot;&gt;&lt;/a&gt;Htmlspecialchars&lt;/h3&gt;&lt;p&gt;试了下发现转义了双引号但没有
+      
+    
+    </summary>
+    
+    
+      <category term="XSS" scheme="http://Yuririns.github.io/tags/XSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Wechall-Crypto</title>
+    <link href="http://Yuririns.github.io/2019/04/05/Wechall-Crypto/"/>
+    <id>http://Yuririns.github.io/2019/04/05/Wechall-Crypto/</id>
+    <published>2019-04-05T13:16:44.000Z</published>
+    <updated>2019-04-25T12:21:53.728Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Training-Crypto-Caesar-I"><a href="#Training-Crypto-Caesar-I" class="headerlink" title="Training: Crypto - Caesar I"></a>Training: Crypto - Caesar I</h3><p>提示是凯撒密码，写了个凯撒密码加解密的Python程序，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode</span><span class="params">()</span>:</span></div><div class="line">    message = input(<span class="string">"输入明文："</span>)</div><div class="line">    n = int(input(<span class="string">"输入密钥数字："</span>))</div><div class="line">    translated = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> message:</div><div class="line">        <span class="keyword">if</span> i == <span class="string">' '</span>:</div><div class="line">            translated += <span class="string">' '</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            translated += chr((ord(i)<span class="number">-65</span>+n)%<span class="number">26</span>+<span class="number">65</span>)</div><div class="line">    print(translated)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">()</span>:</span></div><div class="line">    message = input(<span class="string">"输入密文："</span>)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> range(<span class="number">26</span>):</div><div class="line">        translated = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> message:</div><div class="line">            <span class="keyword">if</span> i == <span class="string">" "</span>:</div><div class="line">                translated += <span class="string">" "</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                translated += chr((ord(i)<span class="number">-65</span>-key)%<span class="number">26</span>+<span class="number">65</span>)</div><div class="line">        print(<span class="string">"密钥为%s，明文为：%s"</span> % (key,translated))</div><div class="line"></div><div class="line">mode = input(<span class="string">"需要加密输入1，需要解密输入2："</span>)</div><div class="line"><span class="keyword">if</span> mode == <span class="string">"1"</span>:</div><div class="line">    encode()</div><div class="line"><span class="keyword">elif</span> mode == <span class="string">"2"</span>:</div><div class="line">    decode()</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">"错误！"</span>)</div></pre></td></tr></table></figure></p><p>输入CQN ZDRLT KAXFW OXG SDVYB XENA CQN UJIH MXP XO LJNBJA JWM HXDA DWRZDN BXUDCRXW RB LXMXXQRPRJUX后运行结果：<br><img src="/pic/Wechall-Crypto/1.png" alt="image"></p><h3 id="Training-Crypto-Transposition-I"><a href="#Training-Crypto-Transposition-I" class="headerlink" title="Training: Crypto - Transposition I"></a>Training: Crypto - Transposition I</h3><p>置换加密，根据前面的oWdnreuf.l推测这个单词为Wonderful.，由此推测出密钥为1032547698（解密）<br>写了一个简单的小程序进行解密：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">a = <span class="string">"oWdnreuf.lY uoc nar ae dht eemssga eaw yebttrew eh nht eelttre sra enic roertco drre . Ihtni koy uowlu dilekt  oes eoyrup sawsro don:wd rodeapmomb.l"</span></div><div class="line">key = <span class="string">"1032547698"</span></div><div class="line">b = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(a)):</div><div class="line">    b.append(int(key[i%len(key)])+len(key)*(int(i/len(key))))</div><div class="line">c = list(map(<span class="keyword">lambda</span> x:a[x],b))</div><div class="line">print(<span class="string">''</span>.join(c))</div></pre></td></tr></table></figure></p><p>运行结果为：<br><img src="/pic/Wechall-Crypto/2.png" alt="image"></p><h3 id="Training-Crypto-Caesar-II"><a href="#Training-Crypto-Caesar-II" class="headerlink" title="Training: Crypto - Caesar II"></a>Training: Crypto - Caesar II</h3><p>凯撒密码，密钥数量从26扩大到128<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">(message)</span>:</span></div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> range(<span class="number">128</span>):</div><div class="line">        isRight = <span class="keyword">True</span></div><div class="line">        translated = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> message:</div><div class="line">            translated += chr((key+i)%<span class="number">128</span>)</div><div class="line">        print(<span class="string">"密钥为%s，明文为：%s"</span> % (key,repr(translated)))</div><div class="line"></div><div class="line">message = <span class="string">"5A 02 02 77 20 7D 02 75 3F 20 0C 02 08 20 06 02 7F 09 78 77 20 02 01 78 20 00 02 05 78 20 76 7B 74 7F 7F 78 01 7A 78 20 7C 01 20 0C 02 08 05 20 7D 02 08 05 01 78 0C 41 20 67 7B 7C 06 20 02 01 78 20 0A 74 06 20 79 74 7C 05 7F 0C 20 78 74 06 0C 20 07 02 20 76 05 74 76 7E 41 20 6A 74 06 01 3A 07 20 7C 07 52 20 44 45 4B 20 7E 78 0C 06 20 7C 06 20 74 20 04 08 7C 07 78 20 06 00 74 7F 7F 20 7E 78 0C 06 03 74 76 78 3F 20 06 02 20 7C 07 20 06 7B 02 08 7F 77 01 3A 07 20 7B 74 09 78 20 07 74 7E 78 01 20 0C 02 08 20 07 02 02 20 7F 02 01 7A 20 07 02 20 77 78 76 05 0C 03 07 20 07 7B 7C 06 20 00 78 06 06 74 7A 78 41 20 6A 78 7F 7F 20 77 02 01 78 3F 20 0C 02 08 05 20 06 02 7F 08 07 7C 02 01 20 7C 06 20 78 7F 05 77 03 7C 7B 7B 74 01 74 7A 41"</span></div><div class="line">message = message.split(<span class="string">" "</span>)</div><div class="line">a = [int(i,<span class="number">16</span>) <span class="keyword">for</span> i <span class="keyword">in</span> message]</div><div class="line">decode(a)</div></pre></td></tr></table></figure></p><p>为了在结果中直接输出\r而不转义，print时用了repr( )</p><blockquote><p>repr()： 产生一个解释器易读的表达形式。<br><img src="/pic/Wechall-Crypto/3.png" alt="image"></p></blockquote><h3 id="Training-Crypto-Substitution-I"><a href="#Training-Crypto-Substitution-I" class="headerlink" title="Training: Crypto - Substitution I"></a>Training: Crypto - Substitution I</h3><p>用<a href="https://quipqiup.com/" target="_blank" rel="external">https://quipqiup.com/</a><br><img src="/pic/Wechall-Crypto/4.png" alt="image"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Training-Crypto-Caesar-I&quot;&gt;&lt;a href=&quot;#Training-Crypto-Caesar-I&quot; class=&quot;headerlink&quot; title=&quot;Training: Crypto - Caesar I&quot;&gt;&lt;/a&gt;Training: C
+      
+    
+    </summary>
+    
+    
+      <category term="Crypto" scheme="http://Yuririns.github.io/tags/Crypto/"/>
+    
+  </entry>
   
   <entry>
     <title>wechall Regex正则</title>

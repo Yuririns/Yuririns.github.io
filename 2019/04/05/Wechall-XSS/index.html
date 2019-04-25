@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Yuririn&#39;s blog
+        Wechall-XSS · Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,11 +68,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Home</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Wechall-XSS</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Home</a>
 </header>
@@ -80,110 +91,77 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/pic/3.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            Wechall-XSS
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+        </p>
+        <!-- 404 -->
+        
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = XSS>XSS</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2019/04/05</span>
+            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/08/21/AES加密/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>AES加密</span>
-                    </h2>
-                <div class="abstract-content">
-                    AES加密1、AES加密原理简单介绍AES加密过程是在一个4×4的字节矩阵上运作，这个矩阵又称为“状态（state）”，其初值就是一个明文区块（矩阵中一个元素大小就是明文区块中的一个Byte）。（Rijndael加密法因支持更大的区块，其矩阵行数可视情况增加）加密时，各轮AES加密循环（除最后一轮外）均包含4个步骤：AddRoundKey — 矩阵中的每一个字节都与该次轮秘钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。SubBytes — 通过非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。ShiftRows — 将矩阵中的每个横列进行循环式移位。Mix...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = python 密码学>python 密码学</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/08/21</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/08/07/pytorch安装/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>pytorch安装</span>
-                    </h2>
-                <div class="abstract-content">
-                    环境为win8.1+python3.6.2这里选择通过Python3.6+pip安装gpu版本pytorch
-首先要先安装cuda：cuda下载地址
-根据自己的系统选择相对应的版本：
-下载cuDNN库：cuDNN库下载地址需要注册并且填写一个问卷然鹅！！！好不容易填写完问卷之后，我发现cuDNN下载只提供了win7和win10的_(:3J∠)_然后win8的我放弃了这一步
-安装完毕后测试安装结果打开命令提示符，输入：nvcc -V结果如下：
-接下来安装pytorch：下载：pytorch由于我的环境为：win8.1+python3.6.2+cuda8.0所以选择下载：这里可供选择的两个w...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/08/07</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/08/03/map函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>map函数和lambda函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    在之前写AES加密算法的代码时，发现map函数在2.x版本和3.x版本中用法有点不同：
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="Htmlspecialchars"><a href="#Htmlspecialchars" class="headerlink" title="Htmlspecialchars"></a>Htmlspecialchars</h3><p>试了下发现转义了双引号但没有转义单引号<br>Input：<code>111&#39; onmouseover=&#39;alert(111)</code><br>弹框：<br><img src="/pic/Wechall-XSS/1.png" alt="image"><br>查了下htmlspecialchars()相关资料发现当flags参数为默认的ENT_COMPAT时，仅编码双引号而不编码单引号。<br><img src="/pic/Wechall-XSS/2.png" alt="image"><br>将flags参数ENT_QUOTES添上通过:</p>
+<pre><code>echo &quot;&lt;a href=&apos;http://&quot;.htmlspecialchars(Common::getPost(&apos;input&apos;),ENT_QUOTES).&quot;&apos;&gt;Exploit Me&lt;/a&gt;&quot;;
+</code></pre><h3 id="Yourself-PHP"><a href="#Yourself-PHP" class="headerlink" title="Yourself PHP"></a>Yourself PHP</h3><p>username参数输入被过滤了,看了下源码<br><img src="/pic/Wechall-XSS/3.png" alt="image"></p>
+<p>$_SERVER[‘PHP_SELF’]漏洞<br>$_SERVER[‘PHP_SELF’]是一个服务器端的系统变量，会返回当前PHP文件相对于网站根目录的位置地址<br>比如这道题的地址为：<a href="https://www.wechall.net/challenge/yourself_php/index.php" target="_blank" rel="external">https://www.wechall.net/challenge/yourself_php/index.php</a><br>那这道题的$_SERVER[‘PHP_SELF’]值就为/challenge/yourself_php/index.php<br>当访问<a href="https://www.wechall.net/challenge/yourself_php/index.php/111时，并不会报错，并且$_SERVER[&#39;PHP_SELF&#39;]的值为challenge/yourself_php/index.php/111" target="_blank" rel="external">https://www.wechall.net/challenge/yourself_php/index.php/111时，并不会报错，并且$_SERVER[&#39;PHP_SELF&#39;]的值为challenge/yourself_php/index.php/111</a><br><img src="/pic/Wechall-XSS/5.png" alt="image"></p>
+<pre><code>Payload:https://www.wechall.net/challenge/yourself_php/index.php/&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;
+</code></pre>
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2019/04/05/Wechall-Crypto/" title= Wechall-Crypto >
+                    <span>Previous Post</span>
+                    <span>Wechall-Crypto</span>
+                </a>
+            </li>
+        
+    </ul>
 
-Python 2.x 返回列表。Python 3.x 返回迭代器。
 
-在3.x的版本中mao()函数返回的是迭代器，所以需要使用list()函数使其返回正常列表：
-以及在2.x版本中可以使用下面①的方法实现输出[(1*2),(3*2),(2*3),(4*8)]:而在3.x版本中无法识别 lambda(a,b) 所以使用②的方法：lambda x: x[0]*x[1]
+    <!-- 来必力City版安装代码 -->
 
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/08/03</span>
-                </div>
-            </div>
-        </article>
+<!-- City版安装代码已完成 -->
     
-    <!-- paginator  -->
+    
+    <!--PC版-->
+
     
 </main>
             <!-- profile -->

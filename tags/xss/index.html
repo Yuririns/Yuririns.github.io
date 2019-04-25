@@ -103,16 +103,14 @@
     
     
         <article class="index-post">
-            <a class="content-show-full" href = "/2019/03/19/XSS-Challenges2/" >
+            <a class="content-show-full" href = "/2019/04/05/Wechall-XSS/" >
                     <h2 class="abstract-title">
                         
-                        <span>XSS Challenges2</span>
+                        <span>Wechall-XSS</span>
                     </h2>
                 <div class="abstract-content">
-                    Stage #10输入1&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;结果：发现过滤了domain，通过双写domain绕过
-1&quot;/&gt;&lt;script&gt;alert(document.domdomainain);&lt;/script&gt;
-
-Stage #11将script替换成了xscript，将onclick替换成了onxxx输入：&quot;&gt;&lt;a href=javasc%72ipt:alert(document.domain)&gt;111&lt;/a&gt;发...
+                    Htmlspecialchars试了下发现转义了双引号但没有转义单引号Input：111&#39; onmouseover=&#39;alert(111)弹框：查了下htmlspecialchars()相关资料发现当flags参数为默认的ENT_COMPAT时，仅编码双引号而不编码单引号。将flags参数ENT_QUOTES添上通过:
+echo &quot;&lt;a href=&apos;http://&quot;.htmlspecialchars(Common::getPost(&apos;input&apos;),ENT_QUOTES).&quot;&apos;&gt;Exploi...
                 </div>
             </a>
             <div class="abstract-post-meta">
@@ -120,46 +118,13 @@ Stage #11将script替换成了xscript，将onclick替换成了onxxx输入：&quo
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
+        <a class="post-tag" href="javascript:void(0);" data-href = XSS>XSS</a>
     
 </div>
                 
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/19</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2019/03/16/XSS-Challenges/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>XSS Challenges</span>
-                    </h2>
-                <div class="abstract-content">
-                    Stage #11&quot;&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
-弹框：
-Stage #21&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
-
-Stage #3输入：&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;发现转义了&lt;&gt;抓包修改第二个参数：弹窗:
-Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt;...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/16</span>
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/04/05</span>
                 </div>
             </div>
         </article>
@@ -342,15 +307,7 @@ Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="total-archive"> Total : 10 </div>
+    <div class="total-archive"> Total : 12 </div>
     
     <div class="post-archive">
     
@@ -362,17 +319,27 @@ Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2019/04/05/Wechall-XSS/" >Wechall-XSS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2019/04/05/Wechall-Crypto/" >Wechall-Crypto</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2019/04/02/wechall Regex正则/" >wechall Regex正则</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
         </li>
     
     
@@ -429,6 +396,61 @@ Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt
         <span class="sidebar-tag-name"><a href= "#">xss</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">python 密码学</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">XSS</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Crypto</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
+n class="sidebar-tag-name"><a href= "#">python 密码学</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">XSS</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Crypto</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
