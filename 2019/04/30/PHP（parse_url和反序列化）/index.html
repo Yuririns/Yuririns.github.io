@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        python 输出 · Yuririn&#39;s blog
+        PHP（parse_url和反序列化） · Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -81,7 +81,7 @@
                 <a href="/" >Home</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">python 输出</a>
+                <a href="#" class="post-name">PHP（parse_url和反序列化）</a>
             </div>
     </div>
     
@@ -102,7 +102,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            python 输出
+            PHP（parse_url和反序列化）
             <!-- 404 -->
             
         </h1>
@@ -118,9 +118,15 @@
         
             <!-- 文章页标签  -->
             
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = php>php</a>
+    
+</div>
+            
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2019/03/30</span>
+                <span class="post-intro-time">2019/04/30</span>
             </div>
         
     </div>
@@ -128,69 +134,51 @@
         <div class="container">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="python-输出"><a href="#python-输出" class="headerlink" title="python 输出"></a><strong>python 输出</strong></h1><p>##1、用“+”输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = <span class="string">'hello'</span></div><div class="line">b = <span class="string">'word'</span></div><div class="line">print(a+<span class="string">' '</span>+b+<span class="string">'!'</span>)</div><div class="line"><span class="comment">#输出：hello word!</span></div></pre></td></tr></table></figure></p>
-<p> 输出中使用“*”：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print((a+<span class="string">' '</span>*<span class="number">10</span>))</div></pre></td></tr></table></figure></p>
-<p>输出结果为：<br><img src="/pic/python输出/3.png" alt="image"></p>
-<p>##2、标准化输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">i = <span class="number">0.999</span></div><div class="line"><span class="comment">#输出百分号需要用%%</span></div><div class="line">print(<span class="string">"一定要看%.1f%%这部剧！"</span> % (i*<span class="number">100</span>))</div></pre></td></tr></table></figure></p>
-<p>结果为：<br><img src="/pic/python输出/4.png" alt="image"></p>
-<p>常用输出：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">格式化符号</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">%o</td>
-<td style="text-align:center">oct 八进制</td>
-</tr>
-<tr>
-<td style="text-align:center">%d</td>
-<td style="text-align:center">dec 十进制</td>
-</tr>
-<tr>
-<td style="text-align:center">%x</td>
-<td style="text-align:center">hex 十六进制</td>
-</tr>
-<tr>
-<td style="text-align:center">%f</td>
-<td style="text-align:center">转成浮点数</td>
-</tr>
-<tr>
-<td style="text-align:center">%e</td>
-<td style="text-align:center">转成科学计数法</td>
-</tr>
-<tr>
-<td style="text-align:center">%g</td>
-<td style="text-align:center">指数e+或浮点数 (根据显示长度)</td>
-</tr>
-<tr>
-<td style="text-align:center">%%</td>
-<td style="text-align:center">输出字符%</td>
-</tr>
-</tbody>
-</table>
-<p>##2、format格式化函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">a = <span class="string">"hello"</span></div><div class="line">b = <span class="string">"world"</span></div><div class="line">print(<span class="string">"&#123;1&#125; &#123;0&#125; &#123;1&#125;"</span>.format(a,b))</div><div class="line"><span class="comment">#输出：word hello word</span></div><div class="line">listA = [<span class="string">"hello"</span>,<span class="string">"hi"</span>,<span class="string">"!"</span>]</div><div class="line">print(<span class="string">"&#123;0[0]&#125;&#123;0[2]&#125; &#123;0[1]&#125;&#123;0[2]&#125;"</span>.format(listA)) <span class="comment">#&#123;0[1]&#125;前面那个0是必须的！</span></div><div class="line"><span class="comment">#输出：hello! hi!</span></div></pre></td></tr></table></figure></p>
-<p>格式转化：<br><img src="/pic/python输出/5.png" alt="image"></p>
+        <h2 id="1、parse-url"><a href="#1、parse-url" class="headerlink" title="1、parse_url()"></a>1、parse_url()</h2><p>parse_url — 解析 URL，返回其组成部分</p>
+<blockquote>
+<p>parse_url ( string $url [, int $component = -1 ] ) : mixed</p>
+</blockquote>
+<p>本函数解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分。  本函数不是用来验证给定 URL 的合法性的，只是将其分解为下面列出的部分。不完整的 URL 也被接受，parse_url() 会尝试尽量正确地将其解析。</p>
+<p>返回值：<br>    • scheme - 如 http<br>    • host<br>    • port<br>    • user<br>    • pass<br>    • path<br>    • query - 在问号 ? 之后<br>  •fragment - 在散列符号 # 之后<br>如果指定了 component 参数， parse_url() 返回一个 string （或在指定为 PHP_URL_PORT 时返回一个 integer）而不是 array。如果 URL 中指定的组成部分不存在，将会返回 NULL。</p>
+<p>$Url=”<a href="http://username:password@hostname/path?arg=value#anchor" target="_blank" rel="external">http://username:password@hostname/path?arg=value#anchor</a>“<br>parse_url($url)的返回值为：<br><img src="/pic/PHP（parse_url和反序列化）/1.png" alt="image"></p>
+<p>Note:<br>parse_url() 是专门用来解析 URL 而不是 URI 的。不过为遵从 PHP 向后兼容的需要有个例外，对 file:// 协议允许三个斜线（file:///…）。其它任何协议都不能这样。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$url=parse_url($_SERVER[<span class="string">'REQUEST_URI'</span>]);</div><div class="line">var_dump($url);</div><div class="line">parse_str($url[<span class="string">'query'</span>],$query);</div><div class="line">var_dump($query);</div><div class="line"><span class="keyword">foreach</span>($query <span class="keyword">as</span> $value)&#123;</div><div class="line">        <span class="keyword">if</span> (preg_match(<span class="string">"/flag/"</span>,$value)) &#123;</div><div class="line">            <span class="keyword">die</span>(<span class="string">'stop hacking!'</span>);</div><div class="line">            <span class="keyword">exit</span>();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line">$value = $_GET[<span class="string">"value"</span>];</div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span> . $value;</div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;right"</span>;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>当url为：<a href="http://127.0.0.1/test.php?value=flag时" target="_blank" rel="external">http://127.0.0.1/test.php?value=flag时</a><br>返回<br><img src="/pic/PHP（parse_url和反序列化）/2.png" alt="image"><br>当url为：<a href="http://127.0.0.1///test.php?value=flag时" target="_blank" rel="external">http://127.0.0.1///test.php?value=flag时</a><br>parse_url()会返回false，绕过验证:<br><img src="/pic/PHP（parse_url和反序列化）/3.png" alt="image"></p>
+<h2 id="2、反序列化"><a href="#2、反序列化" class="headerlink" title="2、反序列化"></a>2、反序列化</h2><blockquote>
+<p>serialize ( mixed $value ) : string<br>serialize() 返回字符串，此字符串包含了表示 value 的字节流，可以存储于任何地方。<br>这有利于存储或传递 PHP 的值，同时不丢失其类型和结构。</p>
+<p>unserialize ( string $str ) : mixed<br>unserialize() 对单一的已序列化的变量进行操作，将其转换回 PHP 的值。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</div><div class="line">	<span class="keyword">private</span> $test1 = <span class="string">"aaa"</span>;</div><div class="line">	<span class="keyword">public</span> $test2 = <span class="string">"bbb"</span>;</div><div class="line">	<span class="keyword">protected</span> $test3 = <span class="string">"ccc"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$test = <span class="keyword">new</span> test();</div><div class="line"><span class="keyword">echo</span>(serialize($test));</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>输出结果如下：<br><img src="/pic/PHP（parse_url和反序列化）/4.png" alt="image"></p>
+<pre><code>O:4:&quot;test&quot;:3:{s:11:&quot;\00test\00test1&quot;;s:3:&quot;aaa&quot;;s:5:&quot;test2&quot;;s:3:&quot;bbb&quot;;s:8:&quot;\00*\00test3&quot;;s:3:&quot;ccc&quot;;}
+</code></pre><h3 id="2、1绕过-wakeup魔术方法"><a href="#2、1绕过-wakeup魔术方法" class="headerlink" title="2、1绕过__wakeup魔术方法"></a>2、1绕过__wakeup魔术方法</h3><p>php面向对象的magic function(魔术方法):</p>
+<pre><code>1. __construct()
+__contstruct()函数被称为构造函数，当实例化类的时候会自动调用该函数
+2. __destruct()
+__destruct()函数被称为析构函数，当类结束的时候自动调用该函数
+3. __sleep()
+__sleep()函数是当php进行序列化操作（serialize）的时候自动调用该函数，可以用于清理对象，并返回一个包含对象中所有应被序列化的变量名称的数组。如果该方法未返回任何内容，则 NULL 被序列化，并产生一个 E_NOTICE 级别的错误。
+4. __wakeup()
+__wakeup()函数是当php进行反序列化操作（unserialize）的时候自动调用该函数
+5. __toString()
+__toString()函数是当对象被当做字符串的时候会自动调用该函数
+</code></pre><p>__wakeup()函数是当php进行反序列化操作（unserialize）的时候自动调用的，而当成员属性数目大于实际数目时可绕过wakeup方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> $aaa = <span class="string">"222"</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;aaa = <span class="string">"222"</span>;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Wake up!&lt;br/&gt;"</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Destruct&lt;br/&gt;aaa="</span>.<span class="keyword">$this</span>-&gt;aaa;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$test1 = <span class="string">'O:4:"test":1:&#123;s:3:"aaa";s:3:"111";&#125;'</span>;</div><div class="line"></div><div class="line">unserialize($test1);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>变量aaa默认值为222，在反序列化时先将传入的值111赋给变量aaa，再在反序列化后执行__wakeup()魔术方法将变量aaa的值重置为222，最后结果：<br><img src="/pic/PHP（parse_url和反序列化）/5.png" alt="image"></p>
+<p>而绕过__wakeup()魔术方法的方法就是让成员属性数目大于实际数目：</p>
+<pre><code>$test1 = &apos;O:4:&quot;test&quot;:2:{s:3:&quot;aaa&quot;;s:3:&quot;111&quot;;}&apos;;
+</code></pre><p><img src="/pic/PHP（parse_url和反序列化）/6.png" alt="image"></p>
+<p>这个漏洞存在PHP5.6.25之前版本和7.0.10之前的7.x版本中</p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
-            <li class="next">
-                <a href= "/2019/03/30/SQL注入学习-information_schema库/" title= SQL注入学习-information_schema库 >
-                    <span>Next Post</span>
-                    <span>SQL注入学习-information_schema库</span>
-                </a>
-            </li>
-        
         
             <li class="previous">
-                <a href= "/2019/03/19/XSS-Challenges2/" title= XSS Challenges2 >
+                <a href= "/2019/04/09/wechall/" title= Wechall >
                     <span>Previous Post</span>
-                    <span>XSS Challenges2</span>
+                    <span>Wechall</span>
                 </a>
             </li>
         
