@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Yuririns.github.io/"/>
-  <updated>2019-05-02T02:37:59.094Z</updated>
+  <updated>2019-05-08T05:25:15.749Z</updated>
   <id>http://Yuririns.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>bs4+requests+tkinter 实现一个简易翻译小程序</title>
+    <link href="http://Yuririns.github.io/2019/05/08/%E7%BF%BB%E8%AF%91%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <id>http://Yuririns.github.io/2019/05/08/翻译小程序/</id>
+    <published>2019-05-08T04:30:12.000Z</published>
+    <updated>2019-05-08T05:25:15.749Z</updated>
+    
+    <content type="html"><![CDATA[<p>前两天看到旁边的妹子用着有道翻译pc版，突然灵机一动想自己写一个简单的翻译小程序。<br>思路是：<br>1、用bs4和requests写个简单的爬虫翻译。（main.py）<br>2、用tkinter实现一个简单的图形化界面。(GUI.py)</p><h3 id="1、main-py"><a href="#1、main-py" class="headerlink" title="1、main.py:"></a>1、main.py:</h3><p>这里选择的翻译网站是金山词霸，打开金山词霸，输入“have fun”测试发现url变为：<br><img src="/pic/翻译小程序/1.png" alt="image"><br>url后面为所输入的需要翻译的词语/短语，所以可以通过直接拼接url并访问得到想要的翻译。<br>对访问到的网页用bs4进行过滤得到想要得到的翻译信息。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">trans</span><span class="params">(word)</span>:</span></div><div class="line">    url = <span class="string">"http://www.iciba.com/"</span></div><div class="line"></div><div class="line"></div><div class="line">    html =requests.get(url+word).text</div><div class="line"></div><div class="line">    soup = BeautifulSoup(html,<span class="string">'html.parser'</span>)</div><div class="line">    trans_list = soup.find_all(<span class="string">'li'</span>, class_=<span class="string">'clearfix'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> trans_list == []:              <span class="comment">#判断为空，则没有翻译</span></div><div class="line">        <span class="keyword">return</span> <span class="string">'无对应翻译，请检查拼写是否正确！'</span></div><div class="line"></div><div class="line">    translation = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> trans <span class="keyword">in</span> trans_list:</div><div class="line"></div><div class="line">        translation = translation + trans.text.replace(<span class="string">'\n'</span>,<span class="string">' '</span>).replace(<span class="string">' '</span>,<span class="string">''</span>) + <span class="string">'\n'</span></div><div class="line">    <span class="keyword">return</span> translation</div></pre></td></tr></table></figure></p><h3 id="2、GUI-py"><a href="#2、GUI-py" class="headerlink" title="2、GUI.py:"></a>2、GUI.py:</h3><p>之前在写AES加密解密程序的时候用到了easyGUI实现图形化界面，easyGUI真的很easy，但是功能也很简易。然后看了下发现tkinter可以实现事件（消息）循环，就学习了tkinter的使用方法，写了一个简单的图形化界面的实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tkinter</div><div class="line"><span class="keyword">import</span> main</div><div class="line"></div><div class="line">window = tkinter.Tk()</div><div class="line"></div><div class="line">var = tkinter.StringVar()</div><div class="line"></div><div class="line">window.title(<span class="string">'translator'</span>)</div><div class="line">window.geometry()</div><div class="line"></div><div class="line">l1 = tkinter.Label(window,text=<span class="string">'请输入需要翻译的内容：'</span>)</div><div class="line">l1.grid(row=<span class="number">0</span>)</div><div class="line"></div><div class="line">e1 = tkinter.Entry(window)</div><div class="line">e1.grid(row=<span class="number">0</span>,column=<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">trans</span><span class="params">()</span>:</span></div><div class="line">    word = e1.get()</div><div class="line">    translation = main.trans(word)</div><div class="line">    var.set(translation)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">b = tkinter.Button(window,text=<span class="string">"翻译"</span>,command=trans)</div><div class="line">b.grid(row=<span class="number">1</span>,columnspan=<span class="number">2</span>,sticky=<span class="string">'W'</span>+<span class="string">'E'</span>)</div><div class="line"></div><div class="line">l2 = tkinter.Label(window,textvar=var)</div><div class="line">l2.grid(columnspan=<span class="number">2</span>)</div><div class="line"></div><div class="line">window.mainloop()</div></pre></td></tr></table></figure></p><h3 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h3><p><img src="/pic/翻译小程序/1.gif" alt="image"></p><p>这个程序目前还有一些漏洞，比如翻译的是句子或者非词库中的词语的话无法得到翻译内容，等之后再来完善一下叭<em>(:3J∠)</em></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;前两天看到旁边的妹子用着有道翻译pc版，突然灵机一动想自己写一个简单的翻译小程序。&lt;br&gt;思路是：&lt;br&gt;1、用bs4和requests写个简单的爬虫翻译。（main.py）&lt;br&gt;2、用tkinter实现一个简单的图形化界面。(GUI.py)&lt;/p&gt;
+&lt;h3 id=&quot;1、
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://Yuririns.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP（parse_url和反序列化）</title>
