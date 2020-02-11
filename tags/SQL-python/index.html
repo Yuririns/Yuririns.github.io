@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        bs4+requests+tkinter 实现一个简易翻译小程序 · Yuririn&#39;s blog
+        Yuririn&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,22 +68,11 @@
     
 </head>
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Home</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">bs4+requests+tkinter 实现一个简易翻译小程序</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Home</a>
 </header>
@@ -91,77 +80,87 @@
         <div class="site-intro">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/pic/3.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            bs4+requests+tkinter 实现一个简易翻译小程序
-            <!-- 404 -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-        </p>
-        <!-- 404 -->
-        
         <!-- 文章页meta -->
-        
-            <!-- 文章页标签  -->
-            
-                <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = python>python</a>
-    
-</div>
-            
-            <div class="post-intro-meta">
-                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2019/05/08</span>
-            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>前两天看到旁边的妹子用着有道翻译pc版，突然灵机一动想自己写一个简单的翻译小程序。<br>思路是：<br>1、用bs4和requests写个简单的爬虫翻译。（main.py）<br>2、用tkinter实现一个简单的图形化界面。(GUI.py)</p>
-<h3 id="1、main-py"><a href="#1、main-py" class="headerlink" title="1、main.py:"></a>1、main.py:</h3><p>这里选择的翻译网站是金山词霸，打开金山词霸，输入“have fun”测试发现url变为：<br><img src="/pic/翻译小程序/1.png" alt="image"><br>url后面为所输入的需要翻译的词语/短语，所以可以通过直接拼接url并访问得到想要的翻译。<br>对访问到的网页用bs4进行过滤得到想要得到的翻译信息。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">trans</span><span class="params">(word)</span>:</span></div><div class="line">    url = <span class="string">"http://www.iciba.com/"</span></div><div class="line"></div><div class="line"></div><div class="line">    html =requests.get(url+word).text</div><div class="line"></div><div class="line">    soup = BeautifulSoup(html,<span class="string">'html.parser'</span>)</div><div class="line">    trans_list = soup.find_all(<span class="string">'li'</span>, class_=<span class="string">'clearfix'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> trans_list == []:              <span class="comment">#判断为空，则没有翻译</span></div><div class="line">        <span class="keyword">return</span> <span class="string">'无对应翻译，请检查拼写是否正确！'</span></div><div class="line"></div><div class="line">    translation = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> trans <span class="keyword">in</span> trans_list:</div><div class="line"></div><div class="line">        translation = translation + trans.text.replace(<span class="string">'\n'</span>,<span class="string">' '</span>).replace(<span class="string">' '</span>,<span class="string">''</span>) + <span class="string">'\n'</span></div><div class="line">    <span class="keyword">return</span> translation</div></pre></td></tr></table></figure></p>
-<h3 id="2、GUI-py"><a href="#2、GUI-py" class="headerlink" title="2、GUI.py:"></a>2、GUI.py:</h3><p>之前在写AES加密解密程序的时候用到了easyGUI实现图形化界面，easyGUI真的很easy，但是功能也很简易。然后看了下发现tkinter可以实现事件（消息）循环，就学习了tkinter的使用方法，写了一个简单的图形化界面的实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tkinter</div><div class="line"><span class="keyword">import</span> main</div><div class="line"></div><div class="line">window = tkinter.Tk()</div><div class="line"></div><div class="line">var = tkinter.StringVar()</div><div class="line"></div><div class="line">window.title(<span class="string">'translator'</span>)</div><div class="line">window.geometry()</div><div class="line"></div><div class="line">l1 = tkinter.Label(window,text=<span class="string">'请输入需要翻译的内容：'</span>)</div><div class="line">l1.grid(row=<span class="number">0</span>)</div><div class="line"></div><div class="line">e1 = tkinter.Entry(window)</div><div class="line">e1.grid(row=<span class="number">0</span>,column=<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">trans</span><span class="params">()</span>:</span></div><div class="line">    word = e1.get()</div><div class="line">    translation = main.trans(word)</div><div class="line">    var.set(translation)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">b = tkinter.Button(window,text=<span class="string">"翻译"</span>,command=trans)</div><div class="line">b.grid(row=<span class="number">1</span>,columnspan=<span class="number">2</span>,sticky=<span class="string">'W'</span>+<span class="string">'E'</span>)</div><div class="line"></div><div class="line">l2 = tkinter.Label(window,textvar=var)</div><div class="line">l2.grid(columnspan=<span class="number">2</span>)</div><div class="line"></div><div class="line">window.mainloop()</div></pre></td></tr></table></figure></p>
-<h3 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h3><p><img src="/pic/翻译小程序/1.gif" alt="image"><br><del>哈哈哈还是第一次尝试录屏制作gif,好玩哈哈哈</del></p>
-<p>这个程序目前还有一些漏洞，比如翻译的是句子或者非词库中的词语的话无法得到翻译内容，等之后再来完善一下叭_(:3J∠)_</p>
-
-    </article>
-    <!-- 前后页  -->
-    <ul class="post-pager">
-        
-        
-            <li class="previous">
-                <a href= "/2019/04/30/PHP（parse_url和反序列化）/" title= PHP（parse_url和反序列化） >
-                    <span>Previous Post</span>
-                    <span>PHP（parse_url和反序列化）</span>
-                </a>
-            </li>
-        
-    </ul>
-
-
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
+            <main class="main index-page">
     
     
-    <!--PC版-->
-
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2020/01/30/Python使用MySQL数据库实例-插入大量数据/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>Python使用MySQL数据库实例-插入大量数据</span>
+                    </h2>
+                <div class="abstract-content">
+                    1、目的:向数据库插入大量的数据（对数据库性能测试，测试数据库压力）
+2、代码:12345678910111213141516import MySQLdbconn = MySQLdb.connect(host=&apos;127.0.0.1&apos;,user=&apos;root&apos;,passwd=&apos;root&apos;,db=&apos;student&apos;,charset=&apos;utf8&apos;)#创建一个游标对象c = conn.cursor()for i in range(100):    command = &quot;INSERT INT...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = SQL python>SQL python</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2020/01/30</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2020/01/30/Python使用MySQL数据库/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>Python使用MySQL数据库</span>
+                    </h2>
+                <div class="abstract-content">
+                    1、Python安装MySQLdb模块:Python连接mysql数据库可以通过MySQLdb模块，但是3.x版本的Python直接用 pip install MySQLdb 安装会报错可以先这个命令进行安装：1pip install mysqlclient==1.3.12
+安装后MySQLdb模块就可以正常导入了：
+2、Python连接数据库流程:连接数据库流程：
+3、代码:连接数据库并进行123456789101112131415import MySQLdbconn = MySQLdb.connect(host=&apos;127.0.0.1&apos;,user=&apos;roo...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = SQL python>SQL python</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2020/01/30</span>
+                </div>
+            </div>
+        </article>
+    
+    <!-- paginator  -->
     
 </main>
             <!-- profile -->
@@ -360,20 +359,138 @@
     
     
     
-    <div class="total-archive"> Total : 15 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 20 </div>
     
     <div class="post-archive">
     
     
     
     
-    <div class="archive-year"> 2019 </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/2019/05/08/翻译小程序/" >bs4+requests+tkinter 实现一个简易翻译小程序</a>
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2020/02/01/selenium学习/" >selenium学习</a>
         </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/Python使用MySQL数据库实例-插入大量数据/" >Python使用MySQL数据库实例-插入大量数据</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/Python使用MySQL数据库/" >Python使用MySQL数据库</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/23</span><a class="archive-post-title" href= "/2020/01/23/SQL复习（上）/" >SQL复习（上）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2020/01/03/线程/" >线程threading</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -402,12 +519,12 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
         </li>
     
     
@@ -418,6 +535,11 @@
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/16</span><a class="archive-post-title" href= "/2019/03/16/XSS-Challenges/" >XSS Challenges</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/02</span><a class="archive-post-title" href= "/2019/02/02/翻译小程序/" >bs4+requests+tkinter 实现一个简易翻译小程序</a>
         </li>
     
     
@@ -472,6 +594,12 @@
         <span class="sidebar-tag-name"><a href= "#">php</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SQL python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SQL</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python selenium</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">

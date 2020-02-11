@@ -116,6 +116,190 @@
     
     
         <article class="index-post">
+            <a class="content-show-full" href = "/2019/03/30/SQL注入学习-information_schema库/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>SQL注入学习-information_schema库</span>
+                    </h2>
+                <div class="abstract-content">
+                    SQL注入学习-information_schema库查看information_schema库1、schemata表打开名叫schemata（这个单词是schem-图表的复数形式）的表，可以看到表中的内容，其中有一列的列名为schema_name，此列的数据为所有的数据库的名称
+2、tables表打开名叫tables的表，可以看到表中的其中两列：table_schema和table_name，table_name的数据为数据库中的表名，而table_schema的数据为table_name中的表所对应的数据库名
+3、columns表打开名叫columns的表，可以看到表中的其中三列：t...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/30</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2019/03/30/Python输出/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>python 输出</span>
+                    </h2>
+                <div class="abstract-content">
+                    python 输出##1、用“+”输出：1234a = 'hello'b = 'word'print(a+' '+b+'!')#输出：hello word!
+ 输出中使用“*”：1print((a+' '*10))
+输出结果为：
+##2、标准化输出：123i = 0.999#输出百分号需要用%%print("一定要看%.1f%%这部剧！" % (i*100))
+结果为：
+常用输出：
+
+
+
+格式化符号
+说明
+
+
+
+
+%o
+oct 八进制
+
+
+%d
+dec 十进制
+
+
+%x
+hex 十六进制
+
+
+%f
+转成浮点数
+
+
+%e
+转成科学计数法
+
+
+%g
+指数e+或浮点数 (根据显示长度)
+
+
+%...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = python>python</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/30</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2019/03/19/XSS-Challenges2/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>XSS Challenges2</span>
+                    </h2>
+                <div class="abstract-content">
+                    Stage #10输入1&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;结果：发现过滤了domain，通过双写domain绕过
+1&quot;/&gt;&lt;script&gt;alert(document.domdomainain);&lt;/script&gt;
+
+Stage #11将script替换成了xscript，将onclick替换成了onxxx输入：&quot;&gt;&lt;a href=javasc%72ipt:alert(document.domain)&gt;111&lt;/a&gt;发...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/19</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2019/03/16/XSS-Challenges/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>XSS Challenges</span>
+                    </h2>
+                <div class="abstract-content">
+                    Stage #11&quot;&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
+弹框：
+Stage #21&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
+
+Stage #3输入：&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;发现转义了&lt;&gt;抓包修改第二个参数：弹窗:
+Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt;...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/16</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2019/02/02/翻译小程序/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>bs4+requests+tkinter 实现一个简易翻译小程序</span>
+                    </h2>
+                <div class="abstract-content">
+                    前两天看到旁边的妹子用着有道翻译pc版，突然灵机一动想自己写一个简单的翻译小程序。思路是：1、用bs4和requests写个简单的爬虫翻译。（main.py）2、用tkinter实现一个简单的图形化界面。(GUI.py)
+1、main.py:这里选择的翻译网站是金山词霸，打开金山词霸，输入“have fun”测试发现url变为：url后面为所输入的需要翻译的词语/短语，所以可以通过直接拼接url并访问得到想要的翻译。对访问到的网页用bs4进行过滤得到想要得到的翻译信息。1234567891011121314151617181920import requestsfrom bs4 impor...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = python>python</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/02/02</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="content-show-full" href = "/2018/08/21/AES加密/" >
                     <h2 class="abstract-title">
                         
@@ -498,20 +682,138 @@ burpsuite
     
     
     
-    <div class="total-archive"> Total : 15 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 20 </div>
     
     <div class="post-archive">
     
     
     
     
-    <div class="archive-year"> 2019 </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/2019/05/08/翻译小程序/" >bs4+requests+tkinter 实现一个简易翻译小程序</a>
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2020/02/01/selenium学习/" >selenium学习</a>
         </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/Python使用MySQL数据库实例-插入大量数据/" >Python使用MySQL数据库实例-插入大量数据</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/Python使用MySQL数据库/" >Python使用MySQL数据库</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/23</span><a class="archive-post-title" href= "/2020/01/23/SQL复习（上）/" >SQL复习（上）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2020/01/03/线程/" >线程threading</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -540,12 +842,12 @@ burpsuite
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
         </li>
     
     
@@ -556,6 +858,11 @@ burpsuite
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/16</span><a class="archive-post-title" href= "/2019/03/16/XSS-Challenges/" >XSS Challenges</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/02</span><a class="archive-post-title" href= "/2019/02/02/翻译小程序/" >bs4+requests+tkinter 实现一个简易翻译小程序</a>
         </li>
     
     
@@ -610,6 +917,12 @@ burpsuite
         <span class="sidebar-tag-name"><a href= "#">php</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SQL python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SQL</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python selenium</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">

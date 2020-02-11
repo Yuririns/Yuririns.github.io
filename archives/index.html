@@ -103,14 +103,131 @@
     
     
         <article class="index-post">
-            <a class="content-show-full" href = "/2019/05/08/翻译小程序/" >
+            <a class="content-show-full" href = "/2020/02/01/selenium学习/" >
                     <h2 class="abstract-title">
                         
-                        <span>bs4+requests+tkinter 实现一个简易翻译小程序</span>
+                        <span>selenium学习</span>
                     </h2>
                 <div class="abstract-content">
-                    前两天看到旁边的妹子用着有道翻译pc版，突然灵机一动想自己写一个简单的翻译小程序。思路是：1、用bs4和requests写个简单的爬虫翻译。（main.py）2、用tkinter实现一个简单的图形化界面。(GUI.py)
-1、main.py:这里选择的翻译网站是金山词霸，打开金山词霸，输入“have fun”测试发现url变为：url后面为所输入的需要翻译的词语/短语，所以可以通过直接拼接url并访问得到想要的翻译。对访问到的网页用bs4进行过滤得到想要得到的翻译信息。1234567891011121314151617181920import requestsfrom bs4 impor...
+                    1、Selenium简介:Selenium（浏览器自动化测试框架）selenium 是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。支持的浏览器包括IE（7, 8, 9, 10, 11），Mozilla Firefox，Safari，Google Chrome，Opera等。这个工具的主要功能包括：测试与浏览器的兼容性——测试你的应用程序看是否能够很好得工作在不同浏览器和操作系统之上。测试系统功能——创建回归测试检验软件功能和用户需求。支持自动录制动作和自动生成 .Net、Java、Perl等不同语言的测试脚本。
+2、安装:pytho...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = python selenium>python selenium</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2020/02/01</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2020/01/30/Python使用MySQL数据库实例-插入大量数据/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>Python使用MySQL数据库实例-插入大量数据</span>
+                    </h2>
+                <div class="abstract-content">
+                    1、目的:向数据库插入大量的数据（对数据库性能测试，测试数据库压力）
+2、代码:12345678910111213141516import MySQLdbconn = MySQLdb.connect(host=&apos;127.0.0.1&apos;,user=&apos;root&apos;,passwd=&apos;root&apos;,db=&apos;student&apos;,charset=&apos;utf8&apos;)#创建一个游标对象c = conn.cursor()for i in range(100):    command = &quot;INSERT INT...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = SQL python>SQL python</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2020/01/30</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2020/01/30/Python使用MySQL数据库/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>Python使用MySQL数据库</span>
+                    </h2>
+                <div class="abstract-content">
+                    1、Python安装MySQLdb模块:Python连接mysql数据库可以通过MySQLdb模块，但是3.x版本的Python直接用 pip install MySQLdb 安装会报错可以先这个命令进行安装：1pip install mysqlclient==1.3.12
+安装后MySQLdb模块就可以正常导入了：
+2、Python连接数据库流程:连接数据库流程：
+3、代码:连接数据库并进行123456789101112131415import MySQLdbconn = MySQLdb.connect(host=&apos;127.0.0.1&apos;,user=&apos;roo...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = SQL python>SQL python</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2020/01/30</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2020/01/23/SQL复习（上）/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>SQL复习（上）</span>
+                    </h2>
+                <div class="abstract-content">
+                    为期8个月的产品岗的实习告一段落，接下来准备学习一下感兴趣的测试的相关技术，准备先把SQL数据库相关的知识重新过一遍，太久没接触都有点忘咯(:3J∠)
+1、查询: FROM    WHERE   ```12345678910条件表达式可以用AND、OR、NOT&lt;条件1&gt;AND&lt;条件2&gt; 、&lt;条件1&gt;OR&lt;条件2&gt;、NOT&lt;条件&gt;例如：查找分数在80分以上的男生SELECT * FROM students WHERE score&gt;80 AND gender = &apos;M&apos;;![image](/pic/SQL复...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = SQL>SQL</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2020/01/23</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2020/01/03/线程/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>线程threading</span>
+                    </h2>
+                <div class="abstract-content">
+                    1、main.py:1234567891011121314151617181920import requestsfrom bs4 import BeautifulSoupdef trans(word):    url = "http://www.iciba.com/"    html =requests.get(url+word).text    soup = BeautifulSoup(html,'html.parser')    trans_list = soup.find_all('li', class_='clearfix')    if trans_list == []:   ...
                 </div>
             </a>
             <div class="abstract-post-meta">
@@ -124,7 +241,7 @@
                 
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/05/08</span>
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2020/01/03</span>
                 </div>
             </div>
         </article>
@@ -281,155 +398,6 @@ Your pattern would match “wechall.jpg “, but it should not match it.
                 <!-- date  -->
                 <div class="abstract-date">
                     <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/04/02</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2019/03/30/SQL注入学习-information_schema库/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>SQL注入学习-information_schema库</span>
-                    </h2>
-                <div class="abstract-content">
-                    SQL注入学习-information_schema库查看information_schema库1、schemata表打开名叫schemata（这个单词是schem-图表的复数形式）的表，可以看到表中的内容，其中有一列的列名为schema_name，此列的数据为所有的数据库的名称
-2、tables表打开名叫tables的表，可以看到表中的其中两列：table_schema和table_name，table_name的数据为数据库中的表名，而table_schema的数据为table_name中的表所对应的数据库名
-3、columns表打开名叫columns的表，可以看到表中的其中三列：t...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/30</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2019/03/30/Python输出/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>python 输出</span>
-                    </h2>
-                <div class="abstract-content">
-                    python 输出##1、用“+”输出：1234a = 'hello'b = 'word'print(a+' '+b+'!')#输出：hello word!
- 输出中使用“*”：1print((a+' '*10))
-输出结果为：
-##2、标准化输出：123i = 0.999#输出百分号需要用%%print("一定要看%.1f%%这部剧！" % (i*100))
-结果为：
-常用输出：
-
-
-
-格式化符号
-说明
-
-
-
-
-%o
-oct 八进制
-
-
-%d
-dec 十进制
-
-
-%x
-hex 十六进制
-
-
-%f
-转成浮点数
-
-
-%e
-转成科学计数法
-
-
-%g
-指数e+或浮点数 (根据显示长度)
-
-
-%...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/30</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2019/03/19/XSS-Challenges2/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>XSS Challenges2</span>
-                    </h2>
-                <div class="abstract-content">
-                    Stage #10输入1&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;结果：发现过滤了domain，通过双写domain绕过
-1&quot;/&gt;&lt;script&gt;alert(document.domdomainain);&lt;/script&gt;
-
-Stage #11将script替换成了xscript，将onclick替换成了onxxx输入：&quot;&gt;&lt;a href=javasc%72ipt:alert(document.domain)&gt;111&lt;/a&gt;发...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/19</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2019/03/16/XSS-Challenges/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>XSS Challenges</span>
-                    </h2>
-                <div class="abstract-content">
-                    Stage #11&quot;&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
-弹框：
-Stage #21&quot;/&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;
-
-Stage #3输入：&lt;/b&gt;&lt;script&gt;alert(document.domain);&lt;/script&gt;发现转义了&lt;&gt;抓包修改第二个参数：弹窗:
-Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt;...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = xss>xss</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/03/16</span>
                 </div>
             </div>
         </article>
@@ -637,20 +605,138 @@ Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt
     
     
     
-    <div class="total-archive"> Total : 15 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 20 </div>
     
     <div class="post-archive">
     
     
     
     
-    <div class="archive-year"> 2019 </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/2019/05/08/翻译小程序/" >bs4+requests+tkinter 实现一个简易翻译小程序</a>
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2020/02/01/selenium学习/" >selenium学习</a>
         </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/Python使用MySQL数据库实例-插入大量数据/" >Python使用MySQL数据库实例-插入大量数据</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/Python使用MySQL数据库/" >Python使用MySQL数据库</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/23</span><a class="archive-post-title" href= "/2020/01/23/SQL复习（上）/" >SQL复习（上）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2020/01/03/线程/" >线程threading</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -679,12 +765,12 @@ Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
         </li>
     
     
@@ -695,6 +781,11 @@ Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/16</span><a class="archive-post-title" href= "/2019/03/16/XSS-Challenges/" >XSS Challenges</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/02</span><a class="archive-post-title" href= "/2019/02/02/翻译小程序/" >bs4+requests+tkinter 实现一个简易翻译小程序</a>
         </li>
     
     
@@ -749,6 +840,12 @@ Stage #4和3一样转义了&lt;&gt;，以及这次第二个参数也转义了&lt
         <span class="sidebar-tag-name"><a href= "#">php</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SQL python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SQL</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python selenium</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
