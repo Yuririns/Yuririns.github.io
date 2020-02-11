@@ -138,7 +138,37 @@
 <h3 id="1、查询"><a href="#1、查询" class="headerlink" title="1、查询:"></a>1、查询:</h3><figure class="highlight plain"><figcaption><span><列名> FROM  <表名>  WHERE  <条件表达式> ```</条件表达式></表名></列名></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">条件表达式可以用AND、OR、NOT</div><div class="line">&lt;条件1&gt;AND&lt;条件2&gt; 、&lt;条件1&gt;OR&lt;条件2&gt;、NOT&lt;条件&gt;</div><div class="line">例如：查找分数在80分以上的男生</div><div class="line">SELECT * FROM students WHERE score&gt;80 AND gender = &apos;M&apos;;</div><div class="line">![image](/pic/SQL复习（上）/1.png)</div><div class="line">！其中优先级：NOT&gt;AND&gt;OR</div><div class="line"></div><div class="line"></div><div class="line">### 2、ORDER BY 排序:</div><div class="line">```ORDER BY &lt;列名&gt;  (ASC/DESC)</div></pre></td></tr></table></figure>
 <p>用ACE或者默认表示升序，DESC表示倒序<br>如果需要进一步排序，可以继续添加列名<br>例如：按照成绩从高到低进行排序，如果有相同分数的，再按照性别倒序排序<br>SELECT name, gender, score FROM students ORDER BY score DESC,gender DESC;<br><img src="/pic/SQL复习（上）/2.png" alt="image"></p>
 <h3 id="3、LIMIT-截取"><a href="#3、LIMIT-截取" class="headerlink" title="3、LIMIT 截取:"></a>3、LIMIT 截取:</h3><figure class="highlight plain"><figcaption><span><m>  OFFSET<n>```</n></m></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">从结果集的n号（第n+1条）开始，截取m条（或少于m条）结果</div><div class="line">索引从0开始，OFFSET 0 代表从第一条开始截取</div><div class="line">OFFSET是可选的，当只写LIMIT m 时，相当于 LIMIT m OFFSET 0</div><div class="line">例如：把结果集分页，每页3条记录，获取第一页的记录</div><div class="line">SELECT id, name, score FROM students ORDER BY score DESC LIMIT 3 OFFSET 0;</div><div class="line">![image](/pic/SQL复习（上）/3.png)</div><div class="line"></div><div class="line">### 4、聚合函数:</div><div class="line">```COUNT( &lt;列名&gt; )</div></pre></td></tr></table></figure>
-<p>查询列的行数，COUNT(*)代表查询所有列的行数<br>例如：查询85分以上（包括85分）的男生的个数，并将列名设置别名为num<br>SELECT COUNT(*) num FROM students WHERE gender=’M’ AND score&gt;85;<br><img src="/pic/SQL复习（上）/4.png" alt="image"><br>常见聚合函数：<br>| 函数 | 说明 |<br>|:——|:——|<br>| SUM | 计算某一列的合计值，该列必须为数值类型 |<br>| AVG | 计算某一列的平均值，该列必须为数值类型制 |<br>| MAX | 计算某一列的最大值 |<br>| MIN | 计算某一列的最小值 |<br>| COUNT | 计算某一列的行数 |</p>
+<p>查询列的行数，COUNT(*)代表查询所有列的行数<br>例如：查询85分以上（包括85分）的男生的个数，并将列名设置别名为num<br>SELECT COUNT(*) num FROM students WHERE gender=’M’ AND score&gt;85;<br><img src="/pic/SQL复习（上）/4.png" alt="image"><br>常见聚合函数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SUM</td>
+<td style="text-align:left">计算某一列的合计值，该列必须为数值类型</td>
+</tr>
+<tr>
+<td style="text-align:left">AVG</td>
+<td style="text-align:left">计算某一列的平均值，该列必须为数值类型制</td>
+</tr>
+<tr>
+<td style="text-align:left">MAX</td>
+<td style="text-align:left">计算某一列的最大值</td>
+</tr>
+<tr>
+<td style="text-align:left">MIN</td>
+<td style="text-align:left">计算某一列的最小值</td>
+</tr>
+<tr>
+<td style="text-align:left">COUNT</td>
+<td style="text-align:left">计算某一列的行数</td>
+</tr>
+</tbody>
+</table>
 <h3 id="5、GROUP-BY分组"><a href="#5、GROUP-BY分组" class="headerlink" title="5、GROUP BY分组:"></a>5、GROUP BY分组:</h3><p><code>GROUP BY &lt;列名&gt;</code><br>GROUP BY子句指定了按照某一列分组聚合<br>例如：查询每个班级男生和女生的平均<br>SELECT class_id,AVG(score),gender FROM  students GROUP BY class_id,gender;<br><img src="/pic/SQL复习（上）/5.png" alt="image"></p>
 
     </article>
@@ -154,9 +184,9 @@
         
         
             <li class="previous">
-                <a href= "/2020/01/03/线程/" title= 线程threading >
+                <a href= "/2019/04/30/PHP（parse_url和反序列化）/" title= PHP（parse_url和反序列化） >
                     <span>Previous Post</span>
-                    <span>线程threading</span>
+                    <span>PHP（parse_url和反序列化）</span>
                 </a>
             </li>
         
@@ -446,18 +476,7 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="total-archive"> Total : 20 </div>
+    <div class="total-archive"> Total : 19 </div>
     
     <div class="post-archive">
     
@@ -466,6 +485,11 @@
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/02</span><a class="archive-post-title" href= "/2020/02/02/翻译小程序/" >bs4+requests+tkinter 实现一个简易翻译小程序</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -485,11 +509,6 @@
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/23</span><a class="archive-post-title" href= "/2020/01/23/SQL复习（上）/" >SQL复习（上）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2020/01/03/线程/" >线程threading</a>
         </li>
     
     
@@ -547,11 +566,6 @@
         </li>
     
     
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/02</span><a class="archive-post-title" href= "/2019/02/02/翻译小程序/" >bs4+requests+tkinter 实现一个简易翻译小程序</a>
-        </li>
-    
-    
     
     
     
@@ -590,25 +604,25 @@
         <div class="sidebar-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name"><a href= "#">正则</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">xss</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">python 密码学</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">XSS</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">Crypto</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">php</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">python</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">SQL python</a></span>
     
+        <span class="sidebar-tag-name"><a href= "#">python</a></span>
+    
         <span class="sidebar-tag-name"><a href= "#">SQL</a></span>
     
+        <span class="sidebar-tag-name"><a href= "#">Crypto</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">XSS</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">xss</a></span>
+    
         <span class="sidebar-tag-name"><a href= "#">python selenium</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">正则</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python 密码学</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
