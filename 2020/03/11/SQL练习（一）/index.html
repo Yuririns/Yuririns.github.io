@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        XUESQL 平台题目练习（一） · Yuririn&#39;s blog
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- 提前加载place holder  -->
+    <style>
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Source Sans Pro';
+            src: url('/font/Source Sans Pro.woff'),
+            url('/font/Source Sans Pro.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Source Code Pro';
+            src: url('/font/SourceCodePro-Regular.ttf.woff'),
+            url('/font/SourceCodePro-Regular.ttf.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        
+        .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0px;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        99% {
+            transform: translate3d(0, 0, 0);
+        }
+        99.1% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(-226px, 0, 0);
+        }
+    }
+    </style>
+    <link rel="stylesheet" href = "/css/style.css?v=20170930" />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Home</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">XUESQL 平台题目练习（一）</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Home</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/pic/3.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            XUESQL 平台题目练习（一）
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+        </p>
+        <!-- 404 -->
+        
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2020/03/11</span>
+            </div>
+        
+    </div>
+</div>
+        <div class="container">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>最近发现了一个SQL 在线练习平台：<a href="http://xuesql.cn/" target="_blank" rel="external">http://xuesql.cn/</a><br>题目难度比较有层次，适合用来巩固SQL相关知识，花了两天的时间把平台所有的题目刷了一遍，还挺有收获的。</p>
+<h3 id="SQL-Lesson-1-SELECT-查询-101"><a href="#SQL-Lesson-1-SELECT-查询-101" class="headerlink" title="SQL Lesson 1: SELECT 查询 101"></a>SQL Lesson 1: SELECT 查询 101</h3><p><img src="/pic/SQL练习/1.png" alt="image"><br>这部分整体非常简单，中间进行相同操作的题目省略了<br>1.找到所有电影的名称title<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> title <span class="keyword">FROM</span> movies;</div></pre></td></tr></table></figure></p>
+<p>5.找到所有电影的所有信息<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies;</div></pre></td></tr></table></figure></p>
+<p>7.请列出所有电影的ID,名称和出版国(即美国)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">Id</span>,Title,<span class="string">"美国"</span> Country <span class="keyword">FROM</span> movies;</div><div class="line"><span class="comment">-- 这里美国得用中文，用英文一直没通过_(:3J∠)_</span></div></pre></td></tr></table></figure></p>
+<h3 id="SQL-Lesson-2-条件查询-constraints-Pt-1"><a href="#SQL-Lesson-2-条件查询-constraints-Pt-1" class="headerlink" title="SQL Lesson 2: 条件查询 (constraints) (Pt. 1)"></a>SQL Lesson 2: 条件查询 (constraints) (Pt. 1)</h3><p><img src="/pic/SQL练习/1.png" alt="image"><br>1.找到id为6的电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">6</span>;</div></pre></td></tr></table></figure></p>
+<p>2.找到在2000-2010年间year上映的电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> <span class="keyword">Year</span>&gt;=<span class="number">2000</span> <span class="keyword">AND</span> <span class="keyword">Year</span>&lt;=<span class="number">2010</span>;</div></pre></td></tr></table></figure></p>
+<p>3.找到不是在2000-2010年间year上映的电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> <span class="keyword">Year</span>&lt;<span class="number">2000</span> <span class="keyword">OR</span> <span class="keyword">Year</span>&gt;<span class="number">2010</span>;</div></pre></td></tr></table></figure></p>
+<p>4.找到头5部电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">LIMIT</span> <span class="number">5</span>;</div></pre></td></tr></table></figure></p>
+<p>5.找到2010（含）年之后的电影里片长小于两个小时的片子<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> <span class="keyword">Year</span>&gt;=<span class="number">2010</span> <span class="keyword">AND</span> Length_minutes&lt;<span class="number">120</span>;</div></pre></td></tr></table></figure></p>
+<p>6.找到99年和09年的电影,只要列出年份和片长看下<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">Year</span>,Length_minutes <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> <span class="keyword">Year</span>=<span class="number">1999</span> <span class="keyword">OR</span> <span class="keyword">Year</span>=<span class="number">2009</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="SQL-Lesson-3-条件查询-constraints-Pt-2"><a href="#SQL-Lesson-3-条件查询-constraints-Pt-2" class="headerlink" title="SQL Lesson 3: 条件查询(constraints) (Pt. 2)"></a>SQL Lesson 3: 条件查询(constraints) (Pt. 2)</h3><p><img src="/pic/SQL练习/1.png" alt="image"><br>1.找到所有Toy Story系列电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> Title <span class="keyword">LIKE</span> <span class="string">"Toy Story%"</span>;</div></pre></td></tr></table></figure></p>
+<p>2.找到所有John Lasseter导演的电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> Director=<span class="string">"John Lasseter"</span>;</div></pre></td></tr></table></figure></p>
+<p>3.找到所有不是John Lasseter导演的电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> Director!=<span class="string">"John Lasseter"</span>;</div></pre></td></tr></table></figure></p>
+<p>4.找到所有电影名为 “WALL-“ 开头的电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> Title <span class="keyword">LIKE</span> <span class="string">"WALL-%"</span>;</div></pre></td></tr></table></figure></p>
+<p>5.有一部98年电影中文名《虫虫危机》请给我找出来<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> <span class="keyword">Year</span>=<span class="number">1998</span>;</div></pre></td></tr></table></figure></p>
+<p>6.找出所有Pete导演的电影,只要列出电影名,导演名和年份就可以<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Title,Director,<span class="keyword">Year</span> <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> Director <span class="keyword">LIKE</span> <span class="string">"Pete%"</span>;</div></pre></td></tr></table></figure></p>
+<p>7.John Lasseter导演了两个系列，一个Car系列一个Toy Story系列,请帮我列出这John Lasseter导演两个系列千禧年之后的电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> <span class="keyword">Year</span>&gt;=<span class="number">2000</span> <span class="keyword">AND</span> Director=<span class="string">"John Lasseter"</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="SQL-Lesson-4-查询结果Filtering过滤-和-sorting排序"><a href="#SQL-Lesson-4-查询结果Filtering过滤-和-sorting排序" class="headerlink" title="SQL Lesson 4: 查询结果Filtering过滤 和 sorting排序"></a>SQL Lesson 4: 查询结果Filtering过滤 和 sorting排序</h3><p><img src="/pic/SQL练习/1.png" alt="image"><br>1.导演名排重列出所有电影，并按导演名正序排列<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Director <span class="keyword">FROM</span> movies <span class="keyword">ORDER</span> <span class="keyword">BY</span> Director;</div></pre></td></tr></table></figure></p>
+<p>2.列出按上映年份最新上线的4部电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">Year</span> <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">4</span>;</div></pre></td></tr></table></figure></p>
+<p>3.按电影名字母序升序排列，列出前5部电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">ORDER</span> <span class="keyword">BY</span> Title <span class="keyword">LIMIT</span> <span class="number">5</span>;</div></pre></td></tr></table></figure></p>
+<p>4.按电影名字母序升序排列，列出上一题之后的5部电影<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">ORDER</span> <span class="keyword">BY</span> Title <span class="keyword">LIMIT</span> <span class="number">5</span>,<span class="number">5</span>;</div></pre></td></tr></table></figure></p>
+<p>5.如果按片长排列，John Lasseter导演导过片长第3长的电影是哪部，列出名字即可<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Title <span class="keyword">FROM</span> movies <span class="keyword">WHERE</span> Director=<span class="string">"John Lasseter"</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Length_minutes <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">2</span>,<span class="number">1</span>;</div><div class="line"><span class="comment">-- 这道题一开始理解错了，理解成按照片名长度排序，想了半天为啥没通过</span></div></pre></td></tr></table></figure></p>
+<p>6.按导演名字母升序,如果导演名相同按年份降序,取前10部电影给我<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> movies <span class="keyword">ORDER</span> <span class="keyword">BY</span> Director,<span class="keyword">Year</span> <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">10</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="SQL-Review-复习-SELECT-查询"><a href="#SQL-Review-复习-SELECT-查询" class="headerlink" title="SQL Review: 复习 SELECT 查询"></a>SQL Review: 复习 SELECT 查询</h3><p><img src="/pic/SQL练习/2.png" alt="image"><br>1.列出所有加拿大人的Canadian信息(包括所有字段)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> north_american_cities <span class="keyword">WHERE</span> country=<span class="string">"Canada"</span>;</div></pre></td></tr></table></figure></p>
+<p>2.列出所有美国United States的城市按纬度从北到南排序(包括所有字段)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> north_american_cities <span class="keyword">WHERE</span> country=<span class="string">"United States"</span> </div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Latitude <span class="keyword">DESC</span>;</div></pre></td></tr></table></figure></p>
+<p>3.列出所有在Chicago西部的城市，从西到东排序(包括所有字段)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> north_american_cities <span class="keyword">WHERE</span> Longitude&lt;<span class="number">-87.629798</span>;</div></pre></td></tr></table></figure></p>
+<p>4.用人口数population排序,列出墨西哥Mexico最大的2个城市(包括所有字段)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> north_american_cities <span class="keyword">WHERE</span> Country=<span class="string">"Mexico"</span> </div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Population <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">2</span>;</div></pre></td></tr></table></figure></p>
+<p>5.列出美国United States人口3-4位的两个城市和他们的人口(包括所有字段)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> north_american_cities <span class="keyword">WHERE</span> Country=<span class="string">"United States"</span> </div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Population <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">2</span>,<span class="number">2</span>;</div></pre></td></tr></table></figure></p>
+<p>6.北美所有城市,请按国家名字母序从A-Z再按人口从多到少排列看下前10位的城市(包括所有字段)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> north_american_cities </div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Country,Population <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">10</span>;</div></pre></td></tr></table></figure></p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2020/02/02/翻译小程序/" title= bs4+requests+tkinter 实现一个简易翻译小程序 >
+                    <span>Previous Post</span>
+                    <span>bs4+requests+tkinter 实现一个简易翻译小程序</span>
+                </a>
+            </li>
+        
+    </ul>
+
+
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 20 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/SQL练习（一）/" >XUESQL 平台题目练习（一）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/02</span><a class="archive-post-title" href= "/2020/02/02/翻译小程序/" >bs4+requests+tkinter 实现一个简易翻译小程序</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2020/02/01/selenium学习/" >selenium学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/Python使用MySQL数据库实例-插入大量数据/" >Python使用MySQL数据库实例-插入大量数据</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/Python使用MySQL数据库/" >Python使用MySQL数据库</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/23</span><a class="archive-post-title" href= "/2020/01/23/SQL复习（上）/" >SQL复习（上）</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2019/04/30/PHP（parse_url和反序列化）/" >PHP（parse_url和反序列化）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2019/04/09/wechall/" >Wechall</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2019/04/05/Wechall-XSS/" >Wechall-XSS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2019/04/05/Wechall-Crypto/" >Wechall-Crypto</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2019/04/02/wechall Regex正则/" >wechall Regex正则</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/SQL注入学习-information_schema库/" >SQL注入学习-information_schema库</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2019/03/30/Python输出/" >python 输出</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/XSS-Challenges2/" >XSS Challenges2</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/16</span><a class="archive-post-title" href= "/2019/03/16/XSS-Challenges/" >XSS Challenges</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/21</span><a class="archive-post-title" href= "/2018/08/21/AES加密/" >AES加密</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/07</span><a class="archive-post-title" href= "/2018/08/07/pytorch安装/" >pytorch安装</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2018/08/03/map函数/" >map函数和lambda函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/25</span><a class="archive-post-title" href= "/2018/02/25/跳一跳java半自动刷分/" >跳一跳学adb</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2018/02/23/CVE-2017-12615漏洞复现/" >CVE-2017-12615漏洞复现</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">php</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SQL python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SQL</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Crypto</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">XSS</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">xss</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python selenium</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">正则</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python 密码学</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
