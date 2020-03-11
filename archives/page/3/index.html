@@ -103,32 +103,38 @@
     
     
         <article class="index-post">
-            <a class="content-show-full" href = "/2018/08/21/AES加密/" >
+            <a class="content-show-full" href = "/2018/02/23/CVE-2017-12615漏洞复现/" >
                     <h2 class="abstract-title">
                         
-                        <span>AES加密</span>
+                        <span>CVE-2017-12615漏洞复现</span>
                     </h2>
                 <div class="abstract-content">
-                    AES加密1、AES加密原理简单介绍AES加密过程是在一个4×4的字节矩阵上运作，这个矩阵又称为“状态（state）”，其初值就是一个明文区块（矩阵中一个元素大小就是明文区块中的一个Byte）。（Rijndael加密法因支持更大的区块，其矩阵行数可视情况增加）加密时，各轮AES加密循环（除最后一轮外）均包含4个步骤：AddRoundKey — 矩阵中的每一个字节都与该次轮秘钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。SubBytes — 通过非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。ShiftRows — 将矩阵中的每个横列进行循环式移位。Mix...
+                    CVE-2017-12615漏洞复现
+1.漏洞背景Tomcat如果开启PUT方法支持则可能存在远程代码执行漏洞，漏洞编号为CVE-2017-12615的漏洞。攻击者可以在使用漏洞上传JSP文件，从而导致远程代码执行。此漏洞影响Windows平台下的Apache Tomcat 7.x版本，目前已经在Apache Tomcat 7.0.81中修复。
+2.环境配置和相关说明
+Windows 7
+配置jdk环境
+Tomcat ，版本为7.0.55
+burpsuite
+
+安装tomcat，这里安装的版本为7.0.55修改Tomcat的conf下的web.xml配置文件添加readonly设置为fa...
                 </div>
             </a>
             <div class="abstract-post-meta">
                 <!-- tags  -->
                 
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = python 密码学>python 密码学</a>
-    
-</div>
-                
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/08/21</span>
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/02/23</span>
                 </div>
             </div>
         </article>
     
     <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/archives/page/2/">#PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
     
 </main>
             <!-- profile -->
